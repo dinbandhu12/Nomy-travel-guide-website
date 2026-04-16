@@ -1,30 +1,28 @@
 import {
   Backpack,
-  BadgeDollarSign,
   Compass,
   Leaf,
   MapPinned,
   ShieldCheck,
-  Sparkles,
-  TimerReset
+  Sparkles
 } from "lucide-react";
 
-export const navItems = ["Home", "About Us", "Features", "Stories", "Blogs"];
+export const navItems = ["Home", "Features", "About", "Contact"];
 
 export const quickFeatures = [
   { label: "Smart Packing", icon: Backpack },
-  { label: "AI Itineraries", icon: Sparkles },
-  { label: "Budget Clarity", icon: BadgeDollarSign },
-  { label: "Live Assistance", icon: TimerReset }
+  { label: "AI Travel Chat", icon: Sparkles },
+  { label: "Explore Nearby", icon: Compass },
+  { label: "Trip Planner", icon: MapPinned }
 ];
 
 export const partnerLogos = [
-  "Trail Note",
-  "Marketly",
-  "Codefly",
-  "Natural",
-  "Doctorly",
-  "Architech"
+  "Google Maps",
+  "OpenAI",
+  "Firebase",
+  "Flutter",
+  "Unsplash",
+  "Riverpod"
 ];
 
 export const services = [
@@ -53,81 +51,96 @@ export const featureCards = [
     title: "AI Travel Guide: Context for every stop",
     text: "Destination summaries, food spots, and quick answers without opening five other apps.",
     meta: ["Mode", "Guide"],
-    icon: Sparkles
+    icon: Sparkles,
+    place: {
+      name: "Jaipur, India",
+      subtitle: "The Pink City",
+      image: "https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=600&q=80"
+    }
   },
   {
     index: "[02]",
     title: "Trip Planner: Build a calmer timeline",
     text: "Move from arrival to daily flow with clear, card-based trip structure and reminders.",
     meta: ["Mode", "Planner"],
-    icon: Compass
+    icon: Compass,
+    place: {
+      name: "Kerala, India",
+      subtitle: "Backwaters & spice trails",
+      image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    }
   },
   {
     index: "[03]",
     title: "Packing Flow: Travel lighter by default",
     text: "Lists adapt to destination, weather, and duration so you stop overpacking the basics.",
     meta: ["Mode", "Packing"],
-    icon: Backpack
+    icon: Backpack,
+    place: {
+      name: "Ladakh, India",
+      subtitle: "High-altitude escape",
+      image: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    }
   }
 ];
 
 export const communityPhotos = [
-  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=80"
+  "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
 ];
 
 export const testimonials = [
   {
     quote:
       "Nomy helped me simplify an entire two-week trip into one calm travel flow. The packing guidance alone saved me from carrying way too much.",
-    name: "Esther Howard",
-    handle: "@esther",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    quote:
-      "It feels less like a generic travel app and more like a smart co-pilot that understands what I need next.",
-    name: "Nina George",
-    handle: "@nina",
+    name: "Priya Nair",
+    handle: "@priyanair",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
   },
   {
     quote:
-      "The itinerary and nearby recommendations feel premium and surprisingly clear. It actually reduces planning friction.",
-    name: "Dev Patel",
-    handle: "@dev",
+      "It feels less like a generic travel app and more like a smart co-pilot that understands what I need next.",
+    name: "Rohan Sharma",
+    handle: "@rohansharma",
     avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80"
+  },
+  {
+    quote:
+      "The itinerary and nearby recommendations feel premium and surprisingly clear. It actually reduces planning friction.",
+    name: "Ananya Iyer",
+    handle: "@ananyaiyer",
+    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&q=80"
   },
   {
     quote:
       "I finally had one place for packing, maps, and ideas. That made the trip smoother from day one to landing back home.",
     name: "Aarav Mehta",
-    handle: "@aarav",
+    handle: "@aaravmehta",
     avatar: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=400&q=80"
   }
 ];
 
 export const footerLinks = {
-  "Main Pages": ["Home", "About Us", "Contact", "Features", "Blog"],
-  Company: ["AI Guide", "Trip Planner", "Pricing", "Stories", "Project Single"],
-  Template: ["404 Not Found", "Password Protected", "Changelog", "License", "Style Guide"]
+  "Quick Links": ["Home", "Features", "How It Works", "Download"],
+  Company: ["About Us", "Contact"],
+  Legal: ["Privacy Policy", "Terms of Service"]
 };
 
 export const photoSet = {
-  hero: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
-  mission: "https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80",
-  servicesLeft: "https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=900&q=80",
-  servicesRight: "https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?auto=format&fit=crop&w=900&q=80",
-  storyMain: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1400&q=80",
-  storySide: "https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=900&q=80",
-  cta: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1800&q=80",
-  article: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80"
+  hero: "https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+  mission: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+  servicesLeft: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
+  servicesRight: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
+  storyMain: "https://images.unsplash.com/photo-1593693411515-c20261bcad6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80",
+  storySide: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
+  cta: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80",
+  article: "https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
 };
 
 export const guideHighlights = [
