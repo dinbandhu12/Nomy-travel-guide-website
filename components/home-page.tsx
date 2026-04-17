@@ -481,14 +481,15 @@ export default function HomePage() {
 
             <div className="reveal-element relative mt-16 overflow-hidden rounded-[28px]">
               <div
-                className="relative h-[640px] w-full"
+                className="relative w-full"
                 style={{
                   background:
                     "linear-gradient(-120deg, #4a6ab9 0%, #9b6cb0 35%, #d9905f 75%, #e9b478 100%)"
                 }}
               >
-                <div className="absolute inset-0 grid place-items-center px-4 md:grid-cols-[1fr_420px]">
-                  <div className="relative z-10 mx-auto w-full max-w-[520px] md:justify-self-center">
+                <div className="grid items-center gap-8 px-8 py-10 md:grid-cols-2 md:gap-12 md:px-12 md:py-12">
+                  {/* Left — traveller profile card */}
+                  <div className="relative z-10 w-full">
                     <div className="rounded-[22px] bg-white/96 p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.4)] backdrop-blur-md md:p-7">
                       <div className="flex items-center gap-4 border-b border-forest/10 pb-4">
                         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-forest text-white">
@@ -537,94 +538,15 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <div className="relative z-10 hidden w-full max-w-[420px] md:block">
-                    <div className="flex flex-col overflow-hidden rounded-[22px] border border-white/40 bg-white/96 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)] backdrop-blur-md">
-                      <div className="flex items-center justify-between border-b border-forest/10 bg-[#F9F4EA] px-5 py-3.5">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-forest text-mint">
-                            <Bot className="h-4 w-4" />
-                          </div>
-                          <div>
-                            <p className="text-[13px] font-semibold leading-tight text-forest">
-                              Nomy AI
-                            </p>
-                            <p className="flex items-center gap-1.5 text-[11px] text-forest/60">
-                              <span className="h-1.5 w-1.5 rounded-full bg-mint" />
-                              online · replies instantly
-                            </p>
-                          </div>
-                        </div>
-                        <span className="rounded-full bg-forest/8 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-forest/72">
-                          Live
-                        </span>
-                      </div>
-
-                      <div className="flex flex-col gap-3 px-5 py-5">
-                        {chatMessages.map((msg, i) => {
-                          const isUser = msg.side === "left";
-                          return (
-                            <div
-                              key={i}
-                              className={cn(
-                                "flex items-end gap-2",
-                                isUser ? "justify-end" : "justify-start"
-                              )}
-                            >
-                              {!isUser && (
-                                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-forest text-mint">
-                                  <Bot className="h-3.5 w-3.5" />
-                                </div>
-                              )}
-                              <div
-                                className={cn(
-                                  "max-w-[260px] px-4 py-2.5 text-[12.5px] leading-[1.5]",
-                                  isUser
-                                    ? "rounded-[16px] rounded-br-[4px] bg-forest text-white"
-                                    : "rounded-[16px] rounded-bl-[4px] bg-[#F4EFE6] text-forest"
-                                )}
-                              >
-                                {!isUser && (
-                                  <p className="mb-1 text-[9.5px] font-semibold uppercase tracking-[0.15em] text-forest/55">
-                                    Nomy AI
-                                  </p>
-                                )}
-                                {msg.text}
-                              </div>
-                              {isUser && (
-                                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-forest/10 text-[10px] font-semibold text-forest">
-                                  PN
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
-
-                        <div className="flex items-end gap-2">
-                          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-forest text-mint">
-                            <Bot className="h-3.5 w-3.5" />
-                          </div>
-                          <div className="flex items-center gap-1.5 rounded-[16px] rounded-bl-[4px] bg-[#F4EFE6] px-4 py-3">
-                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-forest/50" />
-                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-forest/50 [animation-delay:0.15s]" />
-                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-forest/50 [animation-delay:0.3s]" />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="border-t border-forest/10 bg-white px-4 py-3">
-                        <div className="flex items-center gap-2 rounded-full border border-forest/12 bg-[#F9F4EA] px-4 py-2.5">
-                          <span className="flex-1 text-[12px] text-forest/50">
-                            Ask Nomy anything about your trip…
-                          </span>
-                          <button
-                            type="button"
-                            className="flex h-7 w-7 items-center justify-center rounded-full bg-forest text-mint"
-                          >
-                            <ArrowUpRight className="h-3.5 w-3.5" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                  {/* Right — real chat screenshot */}
+                  <div className="relative z-10 flex justify-center">
+                    <Image
+                      src="/images/mockups/nomy-chat.png"
+                      alt="Nomy AI chat interface"
+                      width={300}
+                      height={480}
+                      className="h-auto w-full max-w-[300px] drop-shadow-[0_40px_80px_rgba(0,0,0,0.45)]"
+                    />
                   </div>
                 </div>
               </div>

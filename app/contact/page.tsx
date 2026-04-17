@@ -135,7 +135,7 @@ export default function ContactPage() {
                             Reply time
                           </p>
                           <p className="mt-1 text-[15px] font-semibold text-white">
-                            Within 24 hours
+                            Within 48 hours
                           </p>
                         </div>
                       </div>
