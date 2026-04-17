@@ -43,7 +43,7 @@ export default function ContactPage() {
               </h1>
               <div className="reveal-element">
                 <p className="max-w-lg text-[15px] leading-7 text-forest/74">
-                  Questions, feedback, or just want to say hi — reach out.
+                  Questions, feedback, or just want to say hi reach out.
                   You&apos;ll talk directly to the person building Nomy, and
                   we reply fast.
                 </p>
@@ -295,7 +295,7 @@ export default function ContactPage() {
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
                 The questions we hear most often. Can&apos;t find what you
-                need? Reach out above — we reply fast.
+                need? Reach out above we reply fast.
               </p>
             </div>
 
@@ -314,12 +314,12 @@ export default function ContactPage() {
                 {
                   q: "How accurate is the AI travel assistant?",
                   a:
-                    "The AI is India-aware and context-driven — it knows your location, the season, and your trip. Always verify critical info from official sources."
+                    "The AI is India-aware and context-driven it knows your location, the season, and your trip. Always verify critical info from official sources."
                 },
                 {
                   q: "Can I use Nomy offline?",
                   a:
-                    "Packing lists and saved trips work offline via local storage. Maps, nearby search, and AI chat require internet — as expected."
+                    "Packing lists and saved trips work offline via local storage. Maps, nearby search, and AI chat require internet as expected."
                 },
                 {
                   q: "Is my data safe?",

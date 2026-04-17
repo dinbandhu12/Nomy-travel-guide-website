@@ -162,7 +162,7 @@ export default function DestinationsPage() {
               </h1>
               <div className="reveal-element">
                 <p className="max-w-lg text-[15px] leading-7 text-forest/74">
-                  From Goan beaches to Ladakhi passes — Nomy covers 30+ curated
+                  From Goan beaches to Ladakhi passes Nomy covers 30+ curated
                   Indian destinations with AI-tuned packing, plans, and local
                   tips for every climate and rhythm.
                 </p>
@@ -218,7 +218,7 @@ export default function DestinationsPage() {
                 </span>
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
-                These are the destinations travelers come back to — each one
+                These are the destinations travelers come back to each one
                 tuned for Nomy&apos;s context-aware packing, discovery, and AI
                 chat.
               </p>
@@ -288,7 +288,7 @@ export default function DestinationsPage() {
                 </span>
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
-                Beach, mountain, desert, tropical, snow, or city — Nomy builds
+                Beach, mountain, desert, tropical, snow, or city Nomy builds
                 around the climate and rhythm of each region, so packing and
                 plans stay relevant.
               </p>
@@ -339,7 +339,7 @@ export default function DestinationsPage() {
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
                 One calm flow from picking a destination to walking out the
-                door. Four steps — each powered by AI context.
+                door. Four steps each powered by AI context.
               </p>
             </div>
 

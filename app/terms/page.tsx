@@ -18,12 +18,12 @@ const sections = [
   {
     title: "What Nomy is",
     body:
-      "Nomy is an AI-powered travel planning assistant built for Indian travelers. It provides smart packing lists, nearby place discovery, AI travel chat, trip itineraries, and travel tools. Nomy is not a booking platform — it does not book flights, hotels, buses, or tickets on your behalf."
+      "Nomy is an AI-powered travel planning assistant built for Indian travelers. It provides smart packing lists, nearby place discovery, AI travel chat, trip itineraries, and travel tools. Nomy is not a booking platform it does not book flights, hotels, buses, or tickets on your behalf."
   },
   {
     title: "AI responses",
     body:
-      "The AI assistant provides general travel advice. Responses may not always be accurate, current, or complete. Always verify important details — prices, timings, permit requirements, and safety — from official sources before traveling. We are not liable for any travel decisions based on AI-generated advice."
+      "The AI assistant provides general travel advice. Responses may not always be accurate, current, or complete. Always verify important details prices, timings, permit requirements, and safety from official sources before traveling. We are not liable for any travel decisions based on AI-generated advice."
   },
   {
     title: "Your account",
@@ -54,7 +54,7 @@ const sections = [
   {
     title: "Limitation of liability",
     body:
-      "To the maximum extent permitted by law, Nomy and its developer are not liable for any indirect, incidental, or consequential damages — including travel losses or reliance on AI-generated information."
+      "To the maximum extent permitted by law, Nomy and its developer are not liable for any indirect, incidental, or consequential damages including travel losses or reliance on AI-generated information."
   },
   {
     title: "Changes",
@@ -92,7 +92,7 @@ export default function TermsPage() {
                 </p>
                 <p className="mt-5 max-w-lg text-[15px] leading-7 text-forest/74">
                   By using Nomy, you agree to these terms. We&apos;ve kept them
-                  plain, short, and readable — no surprises.
+                  plain, short, and readable no surprises.
                 </p>
               </div>
             </div>

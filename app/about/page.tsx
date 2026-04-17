@@ -23,19 +23,19 @@ const values = [
     icon: Backpack,
     title: "Built for how India actually travels",
     text:
-      "Train cancellations, monsoon timing, permit zones — Indian travel has its own rhythm. Nomy is built for that rhythm, not against it."
+      "Train cancellations, monsoon timing, permit zones Indian travel has its own rhythm. Nomy is built for that rhythm, not against it."
   },
   {
     icon: Sparkles,
     title: "AI that understands your context",
     text:
-      "Not a generic chatbot. Nomy's AI knows your trip, GPS area, time of day, and season — advice that's relevant right now."
+      "Not a generic chatbot. Nomy's AI knows your trip, GPS area, time of day, and season advice that's relevant right now."
   },
   {
     icon: Compass,
     title: "Calm by design",
     text:
-      "Travel planning is stressful enough. Nomy is intentionally minimal — no ads, no dark patterns, no engagement loops."
+      "Travel planning is stressful enough. Nomy is intentionally minimal no ads, no dark patterns, no engagement loops."
   },
   {
     icon: MapPinned,
@@ -48,7 +48,7 @@ const values = [
 const timeline = [
   {
     label: "The Idea",
-    text: "Started as a packing list generator — a simple tool to stop overpacking for India trips.",
+    text: "Started as a packing list generator a simple tool to stop overpacking for India trips.",
     done: true
   },
   {
@@ -103,7 +103,7 @@ export default function AboutPage() {
                   Nomy started as a personal frustration. Planning a trip in
                   India means switching between five apps, maintaining a Notes
                   doc, and still forgetting something. There had to be a calmer
-                  way — so I built one.
+                  way so I built one.
                 </p>
                 <a
                   href="/#download"
@@ -152,7 +152,7 @@ export default function AboutPage() {
               <div className="reveal-element">
                 <p className="max-w-lg text-[15px] leading-7 text-forest/74">
                   There&apos;s a reason people joke about India travel planning
-                  — it requires a level of juggling that no generic app has
+                  it requires a level of juggling that no generic app has
                   truly solved.
                 </p>
                 <Link
@@ -219,7 +219,7 @@ export default function AboutPage() {
                 </span>
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
-                Four core beliefs guide what Nomy does — and just as
+                Four core beliefs guide what Nomy does and just as
                 importantly, what it refuses to do.
               </p>
             </div>
@@ -261,7 +261,7 @@ export default function AboutPage() {
                 <span className="font-serif italic font-normal">to launch</span>
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
-                Built stage by stage — no big team, no outside funding. Just
+                Built stage by stage no big team, no outside funding. Just
                 consistent progress toward a product worth launching.
               </p>
             </div>

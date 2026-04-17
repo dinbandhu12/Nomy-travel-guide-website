@@ -203,7 +203,7 @@ export default function HomePage() {
                 </span>
               </h1>
               <p className="reveal-element mt-6 max-w-xl text-base leading-7 text-white/70 md:text-[17px]">
-                Your AI travel companion for India — smart packing, nearby
+                Your AI travel companion for India smart packing, nearby
                 discovery, trip planning, and real-time chat, all in one calm app.
               </p>
               <a
@@ -253,7 +253,7 @@ export default function HomePage() {
                 <p className="max-w-lg text-[15px] leading-7 text-forest/74">
                   Travelers across India use Nomy to plan trips, pack smart,
                   reason over destinations, and discover the places that
-                  actually matter — in a single calm flow.
+                  actually matter in a single calm flow.
                 </p>
                 <div className="mt-10 space-y-0 border-t border-forest/15">
                   {workflowFeatures.map((item, idx) => (
@@ -328,7 +328,7 @@ export default function HomePage() {
               </h2>
               <div className="reveal-element">
                 <p className="max-w-lg text-[15px] leading-7 text-forest/74">
-                  Nomy learns from every trip you plan — destinations saved,
+                  Nomy learns from every trip you plan destinations saved,
                   packing choices, and chat history all shape smarter
                   recommendations for your next journey.
                 </p>
@@ -383,7 +383,7 @@ export default function HomePage() {
                       </p>
                       <p className="mt-1 text-[12.5px] leading-5 text-forest/72">
                         For Goa in April, travelers add 2 more items on average
-                        — Nomy now suggests them by default.
+                        Nomy now suggests them by default.
                       </p>
                     </div>
                   </div>
@@ -409,7 +409,7 @@ export default function HomePage() {
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
                 From coastal getaways to high-altitude expeditions, Nomy adapts
-                to the rhythm of Indian travel — weather, terrain, culture, and
+                to the rhythm of Indian travel weather, terrain, culture, and
                 logistics are all understood before your trip begins.
               </p>
             </div>
@@ -466,7 +466,7 @@ export default function HomePage() {
               <div className="reveal-element">
                 <p className="max-w-lg text-[15px] leading-7 text-forest/74">
                   Nomy combines destination context, past trips, weather, and
-                  saved places to give you answers that feel personal — not
+                  saved places to give you answers that feel personal not
                   generic search results.
                 </p>
                 <a
@@ -570,7 +570,7 @@ export default function HomePage() {
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
                 One intelligent travel system that delivers consistently useful
-                outcomes — plans, packing, discovery, and real-time answers all
+                outcomes plans, packing, discovery, and real-time answers all
                 working together.
               </p>
             </div>
@@ -627,8 +627,8 @@ export default function HomePage() {
                 </span>
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
-                Nomy is built on top of a resilient infrastructure — Firebase
-                sync, offline caching, Google Places, and OpenAI — to deliver
+                Nomy is built on top of a resilient infrastructure Firebase
+                sync, offline caching, Google Places, and OpenAI to deliver
                 consistently fast, personalized trips.
               </p>
             </div>
@@ -724,7 +724,7 @@ export default function HomePage() {
               </h2>
               <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
                 Our travel-first approach combines real traveler workflows
-                with AI reasoning — built to deliver calm, useful, repeatable
+                with AI reasoning built to deliver calm, useful, repeatable
                 trip outcomes.
               </p>
             </div>

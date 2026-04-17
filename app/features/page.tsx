@@ -54,7 +54,7 @@ const coreFeatures = [
     label: "NEARBY DISCOVERY",
     title: "Hidden gems locals actually visit.",
     description:
-      "Google Places powered discovery — restaurants, stays, landmarks — filtered by where you are and what you need.",
+      "Google Places powered discovery restaurants, stays, landmarks filtered by where you are and what you need.",
     stat: "30+",
     statLabel: "curated destinations",
     icon: Compass,
@@ -80,28 +80,28 @@ const howItWorks = [
     icon: MapPin,
     title: "Tell Nomy where you're headed",
     text:
-      "Pick a destination and dates. Nomy instantly reads climate, season, and region context — no lengthy forms, no manual setup."
+      "Pick a destination and dates. Nomy instantly reads climate, season, and region context no lengthy forms, no manual setup."
   },
   {
     step: "02",
     icon: Backpack,
     title: "Generate a smart packing list",
     text:
-      "In 30 seconds you get a weather-aware list tuned to trip duration, style, and destination. Edit freely — Nomy remembers your preferences."
+      "In 30 seconds you get a weather-aware list tuned to trip duration, style, and destination. Edit freely Nomy remembers your preferences."
   },
   {
     step: "03",
     icon: MessageSquare,
     title: "Chat with your AI travel guide",
     text:
-      "Ask anything — permit rules, hidden sunset spots, vegetarian cafés, safe taxis. Context-aware answers grounded in your trip."
+      "Ask anything permit rules, hidden sunset spots, vegetarian cafés, safe taxis. Context-aware answers grounded in your trip."
   },
   {
     step: "04",
     icon: Compass,
     title: "Explore nearby, arrive prepared",
     text:
-      "Nearby discovery, saved places, offline trips — Nomy stays useful at the airport, on the train, and out in the field."
+      "Nearby discovery, saved places, offline trips Nomy stays useful at the airport, on the train, and out in the field."
   }
 ];
 
@@ -109,17 +109,17 @@ const toolFeatures = [
   {
     icon: Wallet,
     title: "Budget Tracker",
-    text: "Log spend by category — food, transport, stay, shopping. Per-category breakdowns, no spreadsheet."
+    text: "Log spend by category food, transport, stay, shopping. Per-category breakdowns, no spreadsheet."
   },
   {
     icon: CheckSquare,
     title: "Pre-Trip Checklist",
-    text: "AI-generated checklist — book stays, notify bank, download offline maps. Add your own items anytime."
+    text: "AI-generated checklist book stays, notify bank, download offline maps. Add your own items anytime."
   },
   {
     icon: StickyNote,
     title: "Trip Notes",
-    text: "A quick scratchpad per trip. Check-in codes, taxi numbers, local tips — synced to your account."
+    text: "A quick scratchpad per trip. Check-in codes, taxi numbers, local tips synced to your account."
   },
   {
     icon: Clock,
@@ -129,12 +129,12 @@ const toolFeatures = [
   {
     icon: WifiOff,
     title: "Offline Ready",
-    text: "Packing lists and saved trips work without network. Built for real India travel — trains, hills, remote zones."
+    text: "Packing lists and saved trips work without network. Built for real India travel trains, hills, remote zones."
   },
   {
     icon: Settings2,
     title: "Adaptive Preferences",
-    text: "Nomy remembers your preferences — food, trip style, packing rules — and applies them to every new trip."
+    text: "Nomy remembers your preferences food, trip style, packing rules and applies them to every new trip."
   }
 ];
 
@@ -160,7 +160,7 @@ export default function FeaturesPage() {
             </h1>
             <div className="reveal-element">
               <p className="max-w-lg text-[15px] leading-7 text-forest/74">
-                From packing to discovery to real-time travel answers — Nomy
+                From packing to discovery to real-time travel answers Nomy
                 ships a full toolkit for Indian travelers, in a single calm
                 flow.
               </p>
@@ -214,8 +214,7 @@ export default function FeaturesPage() {
               <span className="font-serif italic font-normal">calm flow</span>
             </h2>
             <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
-              The core of Nomy — packing, discovery, AI chat, and itineraries —
-              works together so every action feeds the next.
+              The core of Nomy packing, discovery, AI chat, and itineraries works together so every action feeds the next.
             </p>
           </div>
 
@@ -278,7 +277,7 @@ export default function FeaturesPage() {
               </span>
             </h2>
             <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
-              From picking a destination to walking out the door — every step
+              From picking a destination to walking out the door every step
               is shaped by AI context, so planning stays calm and packing stays
               smart.
             </p>
@@ -329,7 +328,7 @@ export default function FeaturesPage() {
             </h2>
             <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
               On top of the core features, Nomy ships a full toolkit for the
-              small things that trip you up mid-journey — budgets, notes,
+              small things that trip you up mid-journey budgets, notes,
               checklists, and offline safety.
             </p>
           </div>
@@ -371,7 +370,7 @@ export default function FeaturesPage() {
               <span className="font-serif italic font-normal">five</span>
             </h2>
             <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
-              Every Indian traveler knows this pain — Notes, Docs, WhatsApp,
+              Every Indian traveler knows this pain Notes, Docs, WhatsApp,
               Weather, Maps. Nomy brings all of it into a single flow.
             </p>
           </div>

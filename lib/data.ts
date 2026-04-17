@@ -47,21 +47,21 @@ export const useCases = [
   {
     title: "Smart Packing",
     description:
-      "Auto-curated lists built around destination, trip type, weather, and duration — no manual entries.",
+      "Auto-curated lists built around destination, trip type, weather, and duration no manual entries.",
     stat: "30s to a complete packing list",
     icon: Backpack
   },
   {
     title: "Nearby Discovery",
     description:
-      "Real-time food spots, stays, and landmarks powered by Google Places — always close to you.",
+      "Real-time food spots, stays, and landmarks powered by Google Places always close to you.",
     stat: "100+ curated destinations",
     icon: Compass
   },
   {
     title: "AI Travel Chat",
     description:
-      "Ask culture, safety, food, or timing questions — get real contextual answers, not generic search.",
+      "Ask culture, safety, food, or timing questions get real contextual answers, not generic search.",
     stat: "GPT-4o powered answers",
     icon: Sparkles
   },
@@ -75,7 +75,7 @@ export const useCases = [
   {
     title: "Offline Ready",
     description:
-      "Packing lists and saved trips stay accessible when network drops — built for real India travel.",
+      "Packing lists and saved trips stay accessible when network drops built for real India travel.",
     stat: "100% offline packing",
     icon: WifiOff
   }
@@ -126,11 +126,11 @@ export const impactFeatures = [
 export const impactStats = [
   {
     name: "Speed",
-    text: "Generate a complete packing list in under 30 seconds — no manual entry, no friction."
+    text: "Generate a complete packing list in under 30 seconds no manual entry, no friction."
   },
   {
     name: "Coverage",
-    text: "Built for every Indian travel style — beach, mountain, city, religious, adventure, business."
+    text: "Built for every Indian travel style beach, mountain, city, religious, adventure, business."
   },
   {
     name: "Free",
@@ -145,7 +145,7 @@ export const chatMessages = [
   },
   {
     side: "right",
-    text: "Light cottons, sunscreen SPF 50+, rain jacket (pre-monsoon showers), and power bank — Goa is 32°C with humid evenings."
+    text: "Light cottons, sunscreen SPF 50+, rain jacket (pre-monsoon showers), and power bank Goa is 32°C with humid evenings."
   },
   {
     side: "left",
@@ -153,7 +153,7 @@ export const chatMessages = [
   },
   {
     side: "right",
-    text: "Agonda and Patnem — both 15 minutes away, calmer crowds, great for sunset. Want me to save them to your trip?"
+    text: "Agonda and Patnem both 15 minutes away, calmer crowds, great for sunset. Want me to save them to your trip?"
   }
 ];
 

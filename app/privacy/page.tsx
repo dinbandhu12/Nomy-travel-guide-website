@@ -13,10 +13,10 @@ const sections = [
   {
     title: "Information we collect",
     body:
-      "We collect only what is necessary to operate Nomy — basic profile information (name, photo) from Google Sign-in, trip data you create (destinations, packing lists, notes, itineraries), approximate location when you use map or nearby features, and anonymous usage data to improve the app.",
+      "We collect only what is necessary to operate Nomy basic profile information (name, photo) from Google Sign-in, trip data you create (destinations, packing lists, notes, itineraries), approximate location when you use map or nearby features, and anonymous usage data to improve the app.",
     list: [
       "Google profile basics (name, avatar) when you sign in",
-      "Trip data — destinations, packing lists, notes, itineraries",
+      "Trip data destinations, packing lists, notes, itineraries",
       "Approximate location only when maps or nearby are used",
       "Anonymous usage data to improve reliability and UX"
     ]
@@ -24,7 +24,7 @@ const sections = [
   {
     title: "How we use your information",
     body:
-      "All data is used solely to operate and improve Nomy — syncing trips across devices, providing context-aware AI answers, showing nearby recommendations, and keeping the app stable.",
+      "All data is used solely to operate and improve Nomy syncing trips across devices, providing context-aware AI answers, showing nearby recommendations, and keeping the app stable.",
     list: [
       "Sync trips and packing lists across your devices",
       "Provide AI travel assistance relevant to your destination",
@@ -35,19 +35,19 @@ const sections = [
   {
     title: "What we don't do",
     body:
-      "We avoid everything most travel apps don't — no advertising, no data sales, no dark patterns, no opaque tracking.",
+      "We avoid everything most travel apps don't no advertising, no data sales, no dark patterns, no opaque tracking.",
     list: [
       "We do not sell your personal data to any third party",
       "We do not use your data for advertising or tracking",
       "We do not store your raw GPS location or history",
       "We do not share your trip content with other users",
-      "We do not collect payment information — core features are free"
+      "We do not collect payment information core features are free"
     ]
   },
   {
     title: "Third-party services",
     body:
-      "Nomy uses trusted third-party services to power core features — authentication, cloud storage, maps, and AI responses. Each operates under its own privacy policy and is selected for reliability and data safety. No third party is granted access beyond what's required to deliver the feature."
+      "Nomy uses trusted third-party services to power core features authentication, cloud storage, maps, and AI responses. Each operates under its own privacy policy and is selected for reliability and data safety. No third party is granted access beyond what's required to deliver the feature."
   },
   {
     title: "Data retention & deletion",
@@ -62,7 +62,7 @@ const sections = [
   {
     title: "Updates & contact",
     body:
-      "We may update this policy as the app evolves. The effective date at the top always reflects the latest version. Questions or deletion requests — reach out through the contact page."
+      "We may update this policy as the app evolves. The effective date at the top always reflects the latest version. Questions or deletion requests reach out through the contact page."
   }
 ];
 
