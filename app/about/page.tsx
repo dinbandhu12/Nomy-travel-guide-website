@@ -1,250 +1,337 @@
 import Link from "next/link";
-import { Backpack, Compass, Sparkles, MapPinned, ArrowRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  Backpack,
+  Compass,
+  Download,
+  MapPinned,
+  Sparkles
+} from "lucide-react";
 import type { Metadata } from "next";
 import PageNav from "@/components/page-nav";
+import PageFooter from "@/components/page-footer";
+import SmoothScroll from "@/components/smooth-scroll";
 
 export const metadata: Metadata = {
   title: "About — Nomy",
-  description: "The story behind Nomy — why one developer built a smarter travel app for India.",
+  description:
+    "The story behind Nomy — why one developer built a smarter travel app for India."
 };
 
 const values = [
   {
     icon: Backpack,
-    title: "Built for how India travel actually works",
-    text: "Train cancellations, last-minute permit requirements, asking locals for directions in three languages — Indian travel is unique. Generic travel apps aren't built for this. Nomy is.",
-    dark: false,
+    title: "Built for how India actually travels",
+    text:
+      "Train cancellations, monsoon timing, permit zones — Indian travel has its own rhythm. Nomy is built for that rhythm, not against it."
   },
   {
     icon: Sparkles,
-    title: "AI that knows your context",
-    text: "Not just a chatbot. Nomy's AI knows your trip, your GPS location at area level, the time of day, and the season. Advice that's relevant to right now.",
-    dark: true,
+    title: "AI that understands your context",
+    text:
+      "Not a generic chatbot. Nomy's AI knows your trip, GPS area, time of day, and season — advice that's relevant right now."
   },
   {
     icon: Compass,
     title: "Calm by design",
-    text: "Travel planning is already stressful. Nomy is intentionally minimal — no ads, no noise, no dark patterns. Just the tools you need, when you need them.",
-    dark: false,
+    text:
+      "Travel planning is stressful enough. Nomy is intentionally minimal — no ads, no dark patterns, no engagement loops."
   },
   {
     icon: MapPinned,
     title: "Free for the basics, always",
-    text: "Smart packing, trip planning, and exploring nearby places are free. Core features stay free forever. Premium is for power users who want unlimited AI.",
-    dark: true,
-  },
+    text:
+      "Smart packing, trip planning, and nearby discovery stay free. Premium is reserved for power users who want unlimited AI."
+  }
 ];
 
 const timeline = [
-  { label: "The Idea", text: "Started as a packing list generator — a simple tool to stop overpacking for India trips.", done: true },
-  { label: "Stage 1–2", text: "Built the design system, authentication, and packing engine. First real build on Android.", done: true },
-  { label: "Stage 3", text: "Added Google Maps, place discovery, and curated destinations across India.", done: true },
-  { label: "Stage 4", text: "Integrated AI for chat and itinerary generation. Trip planning and editable itineraries.", done: true },
-  { label: "Stage 5–6", text: "Polish, performance, budget tracker, checklist, notes, AI context v2 with GPS and season.", done: true },
-  { label: "Now", text: "Preparing for Play Store launch. Billing setup in progress, then publish.", done: false },
+  {
+    label: "The Idea",
+    text: "Started as a packing list generator — a simple tool to stop overpacking for India trips.",
+    done: true
+  },
+  {
+    label: "Stage 1–2",
+    text: "Built the design system, auth, and packing engine. First real build on Android.",
+    done: true
+  },
+  {
+    label: "Stage 3",
+    text: "Added Google Maps, place discovery, and curated destinations across India.",
+    done: true
+  },
+  {
+    label: "Stage 4",
+    text: "Integrated AI for chat and itinerary generation with editable daily plans.",
+    done: true
+  },
+  {
+    label: "Stage 5–6",
+    text: "Polish, performance, budget tracker, checklist, notes, AI context v2 with GPS and season awareness.",
+    done: true
+  },
+  {
+    label: "Now",
+    text: "Preparing for Play Store launch. Billing setup in progress, then publish.",
+    done: false
+  }
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      <PageNav />
+    <SmoothScroll>
+      <div className="min-h-screen bg-[#F4EFE6] text-forest">
+        <PageNav />
 
-      {/* Hero */}
-      <section className="bg-forest px-5 py-20 md:px-6 md:py-28">
-        <div className="mx-auto max-w-8xl">
-          <div className="grid gap-12 md:grid-cols-[1.15fr_0.85fr] md:items-center">
-            <div>
-              <span className="inline-block rounded-full border border-[#3DDBC8]/30 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-[#3DDBC8]">
-                About Nomy
-              </span>
-              <h1 className="mt-5 font-extrabold text-[44px] leading-[1.0] tracking-[-0.04em] text-white md:text-[68px]">
-                Built by one<br />developer.<br />
-                <span className="text-[#3DDBC8]">For every</span><br />Indian traveler.
+        {/* HERO */}
+        <section className="reveal-section px-6 pb-20 pt-20 md:pb-28 md:pt-28">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // About Nomy
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h1 className="reveal-element font-semibold text-[44px] leading-[1.02] tracking-[-0.03em] text-forest md:text-[76px]">
+                Built by one developer,
+                <br />
+                <span className="font-serif italic font-normal">
+                  for every Indian traveler
+                </span>
               </h1>
-              <p className="mt-7 max-w-lg text-base leading-8 text-white/65">
-                Nomy started as a personal frustration. Planning a trip to India means switching between
-                five apps, maintaining a Notes doc, and still forgetting something. There had to be a calmer way — so I built one.
-              </p>
-              <a href="/#download" className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-[#3DDBC8] px-7 py-3.5 text-sm font-medium text-forest">
-                Download Free on Android <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-            <div className="rounded-[28px] border border-white/10 bg-white/6 p-7 backdrop-blur-sm">
-              <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-white/40">App at a glance</p>
-              <div className="space-y-0">
-                {[
-                  ["Platform", "Android (iOS coming)"],
-                  ["Team size", "1 developer"],
-                  ["Built with", "Flutter · Firebase · AI"],
-                  ["Status", "Pre-launch"],
-                  ["Price", "Free to download"],
-                  ["Core features", "Always free"],
-                ].map(([label, value], i, arr) => (
-                  <div key={label} className={`flex items-center justify-between py-4 ${i !== arr.length - 1 ? "border-b border-white/10" : ""}`}>
-                    <span className="text-sm text-white/45">{label}</span>
-                    <span className="text-sm font-medium text-white">{value}</span>
-                  </div>
-                ))}
+              <div className="reveal-element">
+                <p className="max-w-lg text-[15px] leading-7 text-forest/74">
+                  Nomy started as a personal frustration. Planning a trip in
+                  India means switching between five apps, maintaining a Notes
+                  doc, and still forgetting something. There had to be a calmer
+                  way — so I built one.
+                </p>
+                <a
+                  href="/#download"
+                  className="button-pill mt-6 inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white"
+                >
+                  <Download className="h-4 w-4" />
+                  Download Free
+                </a>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Stats strip */}
-      <section className="border-b border-[#D6C9B6] bg-[#FBF7F0] px-5 py-10 md:px-6">
-        <div className="mx-auto max-w-8xl">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {[
-              { value: "1", label: "Developer" },
-              { value: "6", label: "Build stages" },
-              { value: "30s", label: "Packing list" },
-              { value: "Free", label: "Always" },
-            ].map((s) => (
-              <div key={s.label} className="rounded-[20px] border border-[#D6C9B6] bg-[#FBF7F0] px-6 py-7 text-center shadow-soft">
-                <div className="font-extrabold text-[38px] leading-none text-forest md:text-[48px]">{s.value}</div>
-                <p className="mt-2 text-sm text-forest/50">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem */}
-      <section className="px-5 py-20 md:px-6 md:py-28">
-        <div className="mx-auto max-w-8xl">
-          <div className="grid gap-12 md:grid-cols-2 md:items-start">
-            <div>
-              <span className="text-sm font-medium text-forest/50">// The Problem</span>
-              <h2 className="mt-4 font-extrabold text-[34px] leading-[1.04] tracking-[-0.04em] text-forest md:text-[52px]">
-                Planning a trip<br />in India is messy.
-              </h2>
-              <p className="mt-6 text-base leading-8 text-ink/60">
-                There&apos;s a reason people joke about India travel planning — it requires a level of juggling that no app has ever truly solved.
-              </p>
-              <p className="mt-4 text-base leading-8 text-ink/60">
-                Nomy puts all of it in one place. Smart packing that knows the season. AI that knows where you are.
-                Trip tools that actually stay organized.
-              </p>
-              <Link href="/features" className="button-pill mt-8 inline-flex items-center gap-2 rounded-full border border-forest/20 bg-[#FBF7F0] px-6 py-3 text-sm font-medium text-forest transition hover:bg-forest hover:text-white">
-                See all features <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="space-y-4">
+            <div className="reveal-element mt-14 grid grid-cols-2 gap-4 border-t border-forest/15 pt-10 md:grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr]">
               {[
-                { emoji: "📋", title: "Packing list on Notes", text: "Rewritten before every trip. Never quite right for the destination or season." },
-                { emoji: "📄", title: "Itinerary on Google Docs", text: "Shared with the group. Outdated by day two. Nobody knows which version is current." },
-                { emoji: "💬", title: "Recommendations on WhatsApp", text: "Buried in a thread from three weeks ago. You screenshot it and then can't find the screenshot." },
-                { emoji: "🌧️", title: "Forgot it was monsoon season", text: "Because the weather app doesn't talk to your packing list." },
-              ].map((item) => (
-                <div key={item.title} className="flex items-start gap-4 rounded-[20px] border border-[#D6C9B6] bg-[#FBF7F0] p-5 shadow-soft">
-                  <span className="mt-0.5 text-2xl">{item.emoji}</span>
-                  <div>
-                    <p className="font-semibold text-forest">{item.title}</p>
-                    <p className="mt-1 text-sm leading-6 text-ink/60">{item.text}</p>
-                  </div>
+                ["Platform", "Android"],
+                ["Team size", "1 developer"],
+                ["Built with", "Flutter · AI"],
+                ["Status", "Pre-launch"],
+                ["Price", "Free"],
+                ["Core", "Always free"]
+              ].map(([label, value]) => (
+                <div key={label}>
+                  <p className="text-[12px] text-forest/55">{label}</p>
+                  <p className="mt-2 text-[14px] font-medium text-forest">
+                    {value}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Values */}
-      <section className="bg-forest px-5 py-20 md:px-6 md:py-28">
-        <div className="mx-auto max-w-8xl">
-          <span className="text-sm font-medium text-[#3DDBC8]">// What We Believe</span>
-          <h2 className="mt-4 font-extrabold text-[34px] leading-[1.04] tracking-[-0.04em] text-white md:text-[52px]">
-            The principles behind<br />every decision.
-          </h2>
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
-            {values.map((v) => {
-              const Icon = v.icon;
-              return (
-                <div
-                  key={v.title}
-                  className={`rounded-[24px] p-7 ${v.dark ? "border border-white/10 bg-white/8" : "bg-[#FBF7F0]"}`}
+        {/* THE PROBLEM */}
+        <section className="reveal-section px-6 pb-24 md:pb-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // The problem
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Planning a trip in
+                <br />
+                <span className="font-serif italic font-normal">
+                  India is messy
+                </span>
+              </h2>
+              <div className="reveal-element">
+                <p className="max-w-lg text-[15px] leading-7 text-forest/74">
+                  There&apos;s a reason people joke about India travel planning
+                  — it requires a level of juggling that no generic app has
+                  truly solved.
+                </p>
+                <Link
+                  href="/features"
+                  className="button-pill mt-6 inline-flex items-center gap-2 rounded-full border border-forest/18 bg-white px-5 py-2.5 text-sm font-medium text-forest"
                 >
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-full ${v.dark ? "bg-white/10 text-[#3DDBC8]" : "bg-forest/8 text-forest"}`}>
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className={`mt-5 text-[18px] font-semibold leading-tight ${v.dark ? "text-white" : "text-forest"}`}>{v.title}</h3>
-                  <p className={`mt-3 text-sm leading-7 ${v.dark ? "text-white/60" : "text-ink/62"}`}>{v.text}</p>
+                  See all features
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="mt-14 grid gap-4 md:grid-cols-2">
+              {[
+                {
+                  title: "Packing list in Notes",
+                  text:
+                    "Rewritten every trip. Never quite right for the destination or the season. The rain jacket you forgot last time? Still missing."
+                },
+                {
+                  title: "Itinerary in Google Docs",
+                  text:
+                    "Shared with the group. Outdated by day two. Nobody knows which version is current, and half the links no longer work."
+                },
+                {
+                  title: "Recommendations in WhatsApp",
+                  text:
+                    "Buried in a thread from three weeks ago. You screenshot it. You lose the screenshot. You ask the friend again."
+                },
+                {
+                  title: "Forgot it was monsoon",
+                  text:
+                    "Because the weather app doesn't talk to your packing list, and neither of them talks to your trip. Travel planning is fragmented."
+                }
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="reveal-element min-h-[220px] rounded-[24px] border border-forest/10 bg-white p-8 shadow-soft md:p-10"
+                >
+                  <p className="text-[20px] font-semibold leading-tight text-forest md:text-[22px]">
+                    {item.title}
+                  </p>
+                  <p className="mt-4 text-[15px] leading-7 text-forest/70">
+                    {item.text}
+                  </p>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Build Timeline */}
-      <section className="px-5 py-20 md:px-6 md:py-28">
-        <div className="mx-auto max-w-8xl">
-          <div className="grid gap-12 md:grid-cols-[1fr_1.2fr] md:items-start">
-            <div>
-              <span className="text-sm font-medium text-forest/50">// Build Journey</span>
-              <h2 className="mt-4 font-extrabold text-[34px] leading-[1.04] tracking-[-0.04em] text-forest md:text-[52px]">
-                From idea<br />to launch.
-              </h2>
-              <p className="mt-5 text-base leading-8 text-ink/60">
-                Built stage by stage — no big team, no outside funding. Just consistent progress toward a product worth launching.
-              </p>
-              <div className="mt-8 rounded-[20px] bg-forest p-6">
-                <p className="text-sm font-medium text-[#3DDBC8]">Current status</p>
-                <p className="mt-2 text-xl font-semibold text-white">Pre-launch · Play Store soon</p>
-                <p className="mt-2 text-sm text-white/55">All core stages complete. Billing setup in progress, then publish.</p>
-              </div>
+              ))}
             </div>
-            <div className="rounded-[28px] border border-[#D6C9B6] bg-[#FBF7F0] p-7 shadow-soft">
-              <div className="space-y-0">
-                {timeline.map((item, i) => (
-                  <div key={item.label} className="flex gap-5">
-                    <div className="flex flex-col items-center">
-                      <div className={`mt-1 h-3.5 w-3.5 shrink-0 rounded-full border-2 ${item.done ? "border-forest bg-forest" : "border-[#3DDBC8] bg-[#3DDBC8]"}`} />
-                      {i < timeline.length - 1 && <div className="my-1 w-0.5 flex-1 bg-[#D6C9B6]" />}
+          </div>
+        </section>
+
+        {/* VALUES */}
+        <section className="reveal-section bg-[#F0E9D9] px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // What we believe
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Principles behind
+                <br />
+                <span className="font-serif italic font-normal">
+                  every decision
+                </span>
+              </h2>
+              <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
+                Four core beliefs guide what Nomy does — and just as
+                importantly, what it refuses to do.
+              </p>
+            </div>
+
+            <div className="mt-14 grid gap-4 md:grid-cols-2">
+              {values.map((v) => {
+                const Icon = v.icon;
+                return (
+                  <div
+                    key={v.title}
+                    className="reveal-element min-h-[260px] rounded-[24px] border border-forest/10 bg-[#F9F4EA] p-8 shadow-soft md:p-10"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-forest/8 text-forest">
+                      <Icon className="h-[22px] w-[22px]" />
                     </div>
-                    <div className={`${i < timeline.length - 1 ? "pb-6" : "pb-0"}`}>
-                      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-forest/40">{item.label}</p>
-                      <p className="mt-1 text-sm leading-7 text-ink/68">{item.text}</p>
+                    <h3 className="mt-6 text-[22px] font-semibold leading-tight text-forest">
+                      {v.title}
+                    </h3>
+                    <p className="mt-4 text-[15px] leading-7 text-forest/70">
+                      {v.text}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* TIMELINE */}
+        <section className="reveal-section px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Build journey
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                From idea
+                <br />
+                <span className="font-serif italic font-normal">to launch</span>
+              </h2>
+              <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
+                Built stage by stage — no big team, no outside funding. Just
+                consistent progress toward a product worth launching.
+              </p>
+            </div>
+
+            <div className="mt-14 border-t border-forest/15">
+              {timeline.map((item, idx) => (
+                <div
+                  key={item.label}
+                  className="reveal-element flex flex-col gap-3 border-b border-forest/15 py-6 md:flex-row md:items-start md:justify-between md:gap-10"
+                >
+                  <div className="flex items-start gap-6">
+                    <span className="text-xs font-medium tracking-[0.15em] text-forest/45 md:pt-1">
+                      0{idx + 1}
+                    </span>
+                    <div>
+                      <p className="text-[16px] font-semibold text-forest">
+                        {item.label}
+                      </p>
+                      <p className="mt-2 max-w-md text-[13px] leading-6 text-forest/68">
+                        {item.text}
+                      </p>
                     </div>
                   </div>
-                ))}
+                  <span
+                    className={
+                      item.done
+                        ? "inline-flex h-fit items-center gap-1.5 rounded-full bg-forest/8 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-forest/72"
+                        : "inline-flex h-fit items-center gap-1.5 rounded-full bg-mint/30 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-forest"
+                    }
+                  >
+                    <span
+                      className={
+                        item.done
+                          ? "h-1.5 w-1.5 rounded-full bg-forest/60"
+                          : "h-1.5 w-1.5 rounded-full bg-forest animate-pulse"
+                      }
+                    />
+                    {item.done ? "Complete" : "In progress"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="reveal-section px-6 pb-24">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element relative overflow-hidden rounded-[24px] bg-[#F0E9D9]">
+              <div className="px-6 py-24 text-center md:py-32">
+                <h2 className="mx-auto max-w-[760px] font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[60px]">
+                  Be among the first to{" "}
+                  <span className="font-serif italic font-normal">
+                    travel with Nomy
+                  </span>
+                </h2>
+                <a
+                  href="/#download"
+                  className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-medium text-white"
+                >
+                  <Download className="h-4 w-4" />
+                  Download Free
+                </a>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="bg-forest px-5 py-16 md:px-6 md:py-20">
-        <div className="mx-auto max-w-8xl">
-          <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
-            <div>
-              <span className="text-sm font-medium text-[#3DDBC8]">// Join Us</span>
-              <h2 className="mt-4 font-extrabold text-[32px] leading-[1.04] tracking-[-0.04em] text-white md:text-[46px]">
-                Be among the first<br />to travel with Nomy.
-              </h2>
-              <p className="mt-4 max-w-md text-base leading-7 text-white/60">
-                Launching soon on Android. Free to download. Your next trip will be lighter.
-              </p>
-            </div>
-            <a href="/#download" className="button-pill shrink-0 inline-flex items-center gap-2 rounded-full bg-[#3DDBC8] px-8 py-4 text-sm font-medium text-forest">
-              Download Free <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <footer className="bg-forest/90 px-5 py-8 md:px-6">
-        <div className="mx-auto flex max-w-8xl flex-col items-center justify-between gap-4 text-sm text-white/50 sm:flex-row">
-          <p>© 2026 Nomy. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="transition hover:text-white">Privacy</Link>
-            <Link href="/terms" className="transition hover:text-white">Terms</Link>
-            <Link href="/contact" className="transition hover:text-white">Contact</Link>
-          </div>
-        </div>
-      </footer>
-    </div>
+        <PageFooter />
+      </div>
+    </SmoothScroll>
   );
 }

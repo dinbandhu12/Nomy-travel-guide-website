@@ -4,25 +4,38 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
-import { CircleArrowUp, CheckCircle, Leaf, Menu, ShoppingBag, X } from "lucide-react";
 import {
-  communityPhotos,
-  featureCards,
+  ArrowUpRight,
+  Backpack,
+  BarChart3,
+  Bot,
+  Check,
+  Compass,
+  Download,
+  MapPinned,
+  Menu,
+  Settings2,
+  Sparkles,
+  WifiOff,
+  X
+} from "lucide-react";
+import {
+  chatMessages,
+  destinationLogos,
   footerLinks,
-  guideHighlights,
+  impactFeatures,
+  impactStats,
   navItems,
-  photoSet,
-  quickFeatures,
-  services,
-  testimonials
+  realWorldCards,
+  travelerCard,
+  useCases,
+  workflowFeatures
 } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import { Draggable, ScrollTrigger, setupGsap } from "@/lib/gsap";
+import { ScrollTrigger, setupGsap } from "@/lib/gsap";
 
 export default function HomePage() {
   const rootRef = useRef<HTMLDivElement | null>(null);
-  const railViewportRef = useRef<HTMLDivElement | null>(null);
-  const railTrackRef = useRef<HTMLDivElement | null>(null);
   const [navVisible, setNavVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -39,36 +52,14 @@ export default function HomePage() {
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>(".section-block").forEach((section) => {
         gsap.from(section.querySelectorAll(".reveal-element"), {
-          y: 48,
+          y: 40,
           opacity: 0,
-          duration: 1.05,
+          duration: 0.95,
           ease: "power4.out",
-          stagger: 0.12,
-          scrollTrigger: { trigger: section, start: "top 82%" }
+          stagger: 0.1,
+          scrollTrigger: { trigger: section, start: "top 85%" }
         });
       });
-
-      gsap.utils.toArray<HTMLElement>(".parallax-img").forEach((element) => {
-        gsap.to(element, {
-          yPercent: -10,
-          ease: "none",
-          scrollTrigger: { trigger: element, scrub: true }
-        });
-      });
-
-      const viewport = railViewportRef.current;
-      const track = railTrackRef.current;
-      if (viewport && track) {
-        const maxX = () => Math.min(0, viewport.clientWidth - track.scrollWidth);
-        Draggable.create(track, {
-          type: "x",
-          bounds: { minX: maxX(), maxX: 0 },
-          edgeResistance: 0.88,
-          inertia: false,
-          onPress: () => track.classList.add("cursor-grabbing"),
-          onRelease: () => track.classList.remove("cursor-grabbing")
-        });
-      }
     }, rootRef);
 
     return () => {
@@ -83,350 +74,374 @@ export default function HomePage() {
     let lastY = window.scrollY;
     const onScroll = () => {
       const currentY = window.scrollY;
-      if (currentY < 80) {
-        setNavVisible(true);
-      } else if (currentY > lastY) {
-        setNavVisible(false);
-      } else {
-        setNavVisible(true);
-      }
+      if (currentY < 80) setNavVisible(true);
+      else if (currentY > lastY) setNavVisible(false);
+      else setNavVisible(true);
       lastY = currentY;
     };
-
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <div ref={rootRef}>
-      <header className={cn("fixed inset-x-0 top-4 z-50 px-4 transition-transform duration-500 md:px-6", navVisible ? "translate-y-0" : "-translate-y-[140%]")}>
-        <div className="page-shell">
-          <div className="glass-nav mx-auto rounded-[24px] border border-[#D6C9B6]/60 shadow-soft md:px-7">
-            <div className="flex items-center justify-between px-5 py-4">
-              <Link href="/" className="flex items-center gap-3">
-                <Image src="/images/branding/logo.png" alt="Nomy" width={38} height={38} className="h-10 w-10 rounded-full" />
-                <div className="leading-tight">
-                  <div className="text-lg font-semibold text-forest">Nomy</div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-forest/52">Travel Guide</div>
-                </div>
-              </Link>
-              <nav className="hidden items-center gap-8 text-sm text-forest/80 lg:flex">
-                {navItems.map((item) => (
-                  <a key={item} href={item === "Contact" ? "/contact" : item === "About" ? "/about" : item === "Features" ? "/features" : `#${item.toLowerCase().replace(/\s+/g, "-")}`} className="transition hover:text-forest">
-                    {item}
-                  </a>
-                ))}
-              </nav>
-              <div className="flex items-center gap-3">
-                <a href="#download" className="button-pill hidden rounded-full bg-forest px-6 py-3 text-sm font-medium text-white lg:inline-flex">Download App</a>
-                <button
-                  type="button"
-                  onClick={() => setMobileMenuOpen((o) => !o)}
-                  className="flex h-11 w-11 items-center justify-center rounded-full bg-forest/8 text-forest lg:hidden"
-                  aria-label="Toggle menu"
-                >
-                  {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                </button>
-              </div>
-            </div>
-            {mobileMenuOpen && (
-              <div className="border-t border-forest/10 px-5 pb-5 pt-4 lg:hidden">
-                <nav className="flex flex-col gap-1">
-                  {navItems.map((item) => (
-                    <a
-                      key={item}
-                      href={item === "Contact" ? "/contact" : item === "About" ? "/about" : `#${item.toLowerCase().replace(/\s+/g, "-")}`}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="rounded-[14px] px-4 py-3 text-sm font-medium text-forest/80 transition hover:bg-forest/5 hover:text-forest"
-                    >
-                      {item}
-                    </a>
-                  ))}
-                  <a href="#download" onClick={() => setMobileMenuOpen(false)} className="button-pill mt-2 rounded-full bg-forest px-6 py-3 text-center text-sm font-medium text-white">
-                    Download on Android
-                  </a>
-                </nav>
-              </div>
-            )}
+    <div ref={rootRef} className="bg-[#F4EFE6] text-forest">
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 border-b border-forest/10 bg-[#F4EFE6]/70 transition-transform duration-500",
+          navVisible ? "translate-y-0" : "-translate-y-full"
+        )}
+      >
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5">
+          <Link href="/" className="flex items-center gap-1">
+            <Image
+              src="/images/branding/logo-g.png"
+              alt="Nomy"
+              width={32}
+              height={32}
+              className="h-12 w-12 rounded-full"
+            />
+            <span className="text-[22px] font-semibold tracking-tight text-forest">
+              nomy
+            </span>
+          </Link>
+          <nav className="hidden items-center gap-8 text-sm text-forest/78 lg:flex">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={
+                  item === "Contact"
+                    ? "/contact"
+                    : item === "About"
+                    ? "/about"
+                    : item === "Features"
+                    ? "/features"
+                    : item === "Destinations"
+                    ? "/destinations"
+                    : `#${item.toLowerCase()}`
+                }
+                className="transition hover:text-forest hover:font-bold"
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
+          <div className="flex items-center gap-3">
+            <a
+              href="#download"
+              className="button-pill hidden rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white lg:inline-flex"
+            >
+              Download Free
+            </a>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((o) => !o)}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-forest/10 text-forest lg:hidden"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </button>
           </div>
         </div>
+        <div
+          className={cn(
+            "overflow-hidden border-t border-forest/10 transition-all duration-300 lg:hidden",
+            mobileMenuOpen ? "max-h-[480px]" : "max-h-0"
+          )}
+        >
+          <nav className="mx-4 flex flex-col gap-1 py-4">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={
+                  item === "Contact"
+                    ? "/contact"
+                    : item === "About"
+                    ? "/about"
+                    : item === "Features"
+                    ? "/features"
+                    : item === "Destinations"
+                    ? "/destinations"
+                    : `#${item.toLowerCase()}`
+                }
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-xl px-4 py-3 text-sm font-medium text-forest/80 transition hover:bg-forest/5"
+              >
+                {item}
+              </a>
+            ))}
+            <a
+              href="#download"
+              onClick={() => setMobileMenuOpen(false)}
+              className="button-pill mt-1 rounded-full bg-forest px-6 py-3 text-center text-sm font-medium text-white"
+            >
+              Download Free
+            </a>
+          </nav>
+        </div>
       </header>
-      <main className="overflow-hidden">
-        <section id="home" className="section-block px-4 pb-12 pt-24 md:px-6 md:pb-16 md:pt-28">
-          <div className="page-shell">
-            <div className="overflow-hidden rounded-[34px] border border-[#D6C9B6] bg-[#FBF7F0] shadow-soft">
-              <div className="px-5 py-8 md:px-7 md:py-10">
-                <div className="grid gap-10 md:grid-cols-[1.35fr_0.65fr]">
-                  <div className="reveal-element">
-                    <h1 className="max-w-4xl font-extrabold text-[42px] leading-[0.95] tracking-[-0.04em] text-forest/90 md:text-[76px]">
-                      Travel Light.<br />Travel Smart.
-                    </h1>
-                  </div>
-                  <div className="reveal-element flex flex-col items-start justify-center">
-                    <p className="max-w-sm text-base leading-7 text-ink/82">
-                      Planning a trip in India means juggling 6 apps, 4 browser tabs, and a WhatsApp group. Nomy puts it all in one calm place.
-                    </p>
-                    <p className="mt-3 text-sm font-medium text-forest/60">Built for Goa, Rajasthan, Kerala, and every trip in between.</p>
-                    <a href="#download" className="button-pill mt-8 rounded-pill bg-mint px-8 py-4 text-sm font-medium text-forest">Download Free on Android</a>
-                    <p className="mt-3 flex items-center gap-1.5 text-xs text-forest/70"><CheckCircle className="h-3.5 w-3.5" />Available Free on Android · Core features always free</p>
-                  </div>
-                </div>
-                
-                <div className="reveal-element mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-4 border-t border-[#D6C9B6] pt-10">
-                  {quickFeatures.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={item.label} className="flex flex-row items-center justify-center gap-3 rounded-[24px] bg-[#FBF7F0] border border-[#D6C9B6] p-6 text-forest shadow-soft hover:shadow-md hover:-translate-y-1 transition duration-300">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-forest/5 text-forest">
-                          <Icon className="h-7 w-7" />
-                        </div>
-                        <span className="text-[15px] font-semibold text-center">{item.label}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
- 
-              <div className="reveal-element relative m-1 overflow-hidden rounded-[28px]">
-                <div className="parallax-wrap relative h-[520px] md:h-[860px]">
-                  <img src={photoSet.hero} alt="Travel landscape" className="parallax-img h-[120%] w-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-forest/35 via-transparent to-transparent" />
-                </div>
 
-                <div className="glass-chip absolute bottom-4 left-4 z-10 rounded-[22px] p-4 text-white shadow-soft md:bottom-8 md:left-8 md:w-[360px]">
-                  <div className="grid grid-cols-[96px_1fr] gap-4">
-                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=400&q=80" alt="Jaipur, India" className="h-24 w-24 rounded-[16px] object-cover" />
-                    <div>
-                      <p className="text-sm leading-6 text-white/80">Your AI travel companion — built for India, designed to travel light.</p>
-                      <div className="mt-3 flex items-end gap-2">
-                        <span className="font-extrabold text-3xl leading-none">Free</span>
-                        <span className="pb-1 text-sm text-white/75">on Android</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <main className="pt-[88px]">
+        {/* HERO */}
+        <section className="section-block relative">
+          <div className="relative h-[96vh] min-h-[620px] w-full overflow-hidden">
+            <img
+            src="/images/background/hero-image.png"
+              // src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=2000&q=80"
+              alt="Cinematic Indian landscape"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35" />
+            <div className="relative mx-auto flex h-full max-w-[1400px] flex-col items-center justify-center px-6 pb-28 pt-20 md:pt-40 text-center">
+              <h1 className="reveal-element max-w-[900px] font-semibold text-[44px] leading-[1.02] tracking-[-0.03em] text-white md:text-[76px]">
+                Intelligence that plans{" "}
+                <span className="font-serif italic font-normal">
+                  your journeys
+                </span>
+              </h1>
+              <p className="reveal-element mt-6 max-w-xl text-base leading-7 text-white/70 md:text-[17px]">
+                Your AI travel companion for India — smart packing, nearby
+                discovery, trip planning, and real-time chat, all in one calm app.
+              </p>
+              <a
+                href="#download"
+                className="reveal-element button-pill mt-9 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-forest"
+              >
+                <Download className="h-4 w-4" />
+                Download Free on Android
+              </a>
             </div>
-          </div>
-        </section>
-
-        <section id="how-it-works" className="section-block bg-forest px-4 py-12 md:px-6 md:py-[150px]">
-          <div className="page-shell">
-            <div className="text-center">
-              <p className="reveal-element text-sm text-[#3DDBC8]">// How It Works</p>
-              <h2 className="reveal-element mt-3 font-extrabold text-[40px] leading-[1.06] tracking-[-0.04em] text-white md:text-[60px]">Three Steps to a Calmer Trip.</h2>
-              <p className="reveal-element mx-auto mt-4 max-w-xl text-base leading-7 text-white/60">No more switching between apps. Nomy handles the whole journey in one place.</p>
-            </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {[
-                { step: "01", title: "Tell Nomy where you're going", text: "Enter your destination and travel dates. Nomy instantly understands your trip context — destination, season, duration." },
-                { step: "02", title: "Get a smart packing list + nearby gems", text: "An AI-curated packing list, local food spots, landmarks, and hidden gems — all tailored to your trip in seconds." },
-                { step: "03", title: "Chat with your AI guide anytime", text: "Ask anything about your destination mid-trip. Get real, contextual answers without switching between five different apps." }
-              ].map((item) => (
-                <div key={item.step} className="reveal-element rounded-[28px] bg-[#FBF7F0] p-8 shadow-card">
-                  <div className="font-extrabold text-[64px] leading-none text-forest">{item.step}</div>
-                  <h3 className="mt-4 text-[22px] font-medium leading-tight text-forest">{item.title}</h3>
-                  <p className="mt-4 text-base leading-7 text-ink/82">{item.text}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-20 grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-              <div>
-                <p className="reveal-element text-sm text-[#3DDBC8]">// About us</p>
-                <h2 className="reveal-element mt-3 max-w-xl font-extrabold text-[42px] leading-[1.02] tracking-[-0.04em] text-white md:text-[64px]">
-                  Our Main Goal is to Simplify The Travel Journey.
-                </h2>
-                <div className="mt-10 grid gap-6 md:grid-cols-[210px_1fr]">
-                  <div className="reveal-element rounded-[24px] bg-[#FBF7F0] p-4 shadow-card">
-                    <div className="text-center text-sm font-medium pb-2 text-forest">Early Access</div>
-                    <div className="rounded-[16px] bg-mint p-3"><img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=500&q=80" alt="Travel card" className="h-28 w-full rounded-[14px] object-cover" /></div>
-                    <div className="mt-5 font-extrabold text-6xl leading-none text-forest">Free</div>
-                    <p className="mt-3 text-sm leading-6 text-ink/82">Download free on Android and be among our first users.</p>
-                  </div>
-                  <div className="reveal-element flex flex-col justify-center md:pr-8 md:pl-8">
-                    <p className="max-w-md text-base leading-8 text-white/80">
-                      Nomy is your AI-powered travel companion for India. Smart packing lists in under 30 seconds, AI chat for any destination question, offline maps, and a trip planner built for how India travel actually works.
-                    </p>
-                    <p className="mt-3 text-sm text-[#3DDBC8] font-medium">Core features free forever. Premium unlocks unlimited AI chat.</p>
-                    <a href="#download" className="mt-8 inline-flex w-fit rounded-pill bg-mint px-7 py-3 text-sm font-medium text-forest">Download Free</a>
-                  </div>
-                </div>
-              </div>
-              <div className="reveal-element relative">
-                <div className="absolute md:left-[-14px] top-[-14px] h-full w-full rounded-[30px] border border-mint/80" />
-                <div className="relative overflow-hidden rounded-[30px]"><img src={photoSet.mission} alt="Traveler checking phone" className="h-[540px] w-full object-cover" /></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="features" className="section-block px-4 py-12 md:px-6 md:py-[150px]">
-          <div className="page-shell">
-            <div className="grid gap-8 border-b border-[#D6C9B6] pb-12 md:grid-cols-[1fr_0.6fr]">
-              <div>
-                <p className="reveal-element text-sm text-forest/54">// Features</p>
-                <h2 className="reveal-element mt-3 max-w-3xl font-extrabold text-[42px] leading-[1.02] tracking-[-0.04em] text-forest/90 md:text-[64px]">
-                  From Planning to Packing:
-                  <br />
-                  We&apos;ve Got You Covered.
-                </h2>
-              </div>
-              <div className="reveal-element flex flex-col items-start justify-center md:items-end">
-                <p className="max-w-sm text-base leading-7 text-ink/82">Nomy is more than a travel app — it is a calmer way to plan, pack, and explore India.</p>
-                <a href="#download" className="button-pill mt-7 rounded-pill bg-forest px-7 py-3 text-sm font-medium text-white">Download on Android</a>
-              </div>
-            </div>
-            <div className="mt-8 grid gap-8 md:grid-cols-[340px_1fr_340px] md:items-start">
-              <div className="reveal-element overflow-hidden rounded-[22px] md:mt-8"><img src={photoSet.servicesLeft} alt="Travel photo left" className="h-[260px] w-full object-cover md:h-[360px]" /></div>
-              <div className="space-y-7 pt-2 text-center">
-                {services.map((item) => (
-                  <div key={item.title} className={cn("reveal-element mx-auto max-w-[560px]", item.featured ? "relative rounded-[22px] bg-forest px-8 py-7 text-white shadow-soft" : "")}>
-                    <h3 className={cn("text-[28px] font-medium leading-tight", item.featured ? "text-[#3DDBC8]" : "text-forest")}>{item.title}</h3>
-                    <p className={cn("mx-auto mt-2 max-w-md text-base leading-7", item.featured ? "text-white/76" : "text-ink/82")}>{item.description}</p>
-                    {item.featured ? <div className="absolute left-0 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-mint text-forest"><Leaf className="h-6 w-6" /></div> : null}
-                  </div>
+            <div className="absolute inset-x-0 bottom-0 border-t border-white/15 bg-black/18 backdrop-blur-sm">
+              <div className="mx-auto grid max-w-[1400px] grid-cols-3 gap-y-3 px-6 py-5 text-sm font-medium uppercase tracking-[0.2em] text-white/70 md:flex md:flex-wrap md:items-center md:justify-between md:gap-y-4">
+                {destinationLogos.map((logo) => (
+                  <span key={logo} className="opacity-85 text-center md:text-left">
+                    {logo}
+                  </span>
                 ))}
               </div>
-              <div className="reveal-element overflow-hidden rounded-[22px] md:mt-[180px]"><img src={photoSet.servicesRight} alt="Travel photo right" className="h-[260px] w-full object-cover md:h-[360px]" /></div>
             </div>
           </div>
         </section>
 
-        <section className="section-block px-4 py-12 md:px-6 md:py-[150px]">
-          <div className="page-shell">
-            <div className="mb-20 text-center">
-              <p className="reveal-element text-sm text-forest/54">// Why Choose Nomy</p>
-              <h2 className="reveal-element mx-auto mt-3 max-w-4xl font-extrabold text-[40px] leading-[1.06] tracking-[-0.04em] text-forest/90 md:text-[62px]">
-                Built for India. Designed to Make Every Trip Feel Lighter.
-              </h2>
+        {/* SECTION 1 — WORKFLOW BUILDER */}
+        <section className="section-block px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Nomy App
             </div>
-
-            <div className="grid gap-8 md:grid-cols-[0.55fr_1fr_0.35fr] md:items-start">
-              <div className="space-y-8">
-                <div className="reveal-element">
-                  <p className="max-w-[260px] text-base leading-8 text-ink/82">We built Nomy because travel planning in India is messy — too many apps, too much friction. Nomy brings it all into one calm, intelligent flow.</p>
-                  <a href="#download" className="button-pill mt-8 inline-flex rounded-pill bg-forest px-7 py-3 text-sm font-medium text-white">Download Free</a>
-                </div>
-                <div className="reveal-element rounded-[24px] bg-forest p-7 shadow-card">
-                  {[
-                    ["30s", "Packing list in under 30 seconds"],
-                    ["Offline", "Works without internet signal"],
-                    ["Free", "Core features, free on Android"]
-                  ].map(([value, label], index) => (
-                    <div key={value} className={cn("pb-5", index !== 2 && "mb-5 border-b border-white/12")}>
-                      <div className="font-extrabold text-6xl leading-none text-mint">{value}</div>
-                      <p className="mt-2 text-base text-white/75">{label}</p>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <div className="reveal-element">
+                <h2 className="font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                  Smart travel tools for
+                  <br />
+                  <span className="font-serif italic font-normal">
+                    complexity and calm
+                  </span>
+                </h2>
+                <a
+                  href="/features"
+                  className="button-pill mt-8 inline-flex items-center gap-2 rounded-full border border-forest/18 bg-white px-5 py-2.5 text-sm font-medium text-forest"
+                >
+                  Learn more about what Nomy can do
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+              <div className="reveal-element">
+                <p className="max-w-lg text-[15px] leading-7 text-forest/74">
+                  Travelers across India use Nomy to plan trips, pack smart,
+                  reason over destinations, and discover the places that
+                  actually matter — in a single calm flow.
+                </p>
+                <div className="mt-10 space-y-0 border-t border-forest/15">
+                  {workflowFeatures.map((item, idx) => (
+                    <div
+                      key={item.title}
+                      className={cn(
+                        "flex items-center justify-between gap-6 border-b border-forest/15 py-5"
+                      )}
+                    >
+                      <p className="max-w-sm text-[15px] leading-6 text-forest/82">
+                        {item.title}
+                      </p>
+                      <span className="text-xs font-medium tracking-[0.15em] text-forest/45">
+                        0{idx + 1}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="reveal-element overflow-hidden rounded-[28px]">
-                <div className="relative">
-                  <img src={photoSet.storyMain} alt="Road trip landscape" className="h-[680px] w-full object-cover md:h-[700px]" />
-                  <div className="absolute inset-x-5 bottom-5 rounded-[24px] bg-[#FBF7F0] p-5 shadow-soft">
-                    <div className="grid items-center gap-4 md:grid-cols-[54px_1fr_32px]">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-mint text-forest"><ShoppingBag className="h-6 w-6" /></div>
-                      <div>
-                        <h3 className="text-2xl font-medium text-forest">AI Travel Guide</h3>
-                        <p className="mt-1 text-sm leading-6 text-ink/82">Destination context, food spots, and real-time travel help — all in one place.</p>
-                      </div>
-                      <div className="space-y-2"><div className="ml-auto h-2 w-2 rounded-full bg-forest" /><div className="ml-auto h-2 w-2 rounded-full bg-mint" /></div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 2 — COMMON USE CASES */}
+        <section className="section-block px-6 pb-24 md:pb-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Common use cases across every trip
+            </div>
+            <div className="mt-6 grid gap-3 md:grid-cols-5">
+              {useCases.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.title}
+                    className="reveal-element flex flex-col rounded-[20px] border border-forest/10 bg-[#F9F4EA] p-6 shadow-[0_1px_0_rgba(0,61,46,0.04)]"
+                  >
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-forest/8 text-forest">
+                      <Icon className="h-[18px] w-[18px]" />
                     </div>
-                    <div className="mt-5 grid gap-3 md:grid-cols-2">
-                      {guideHighlights.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                          <div key={item.title} className="rounded-[18px] bg-[#FBF7F0] p-4">
-                            <Icon className="h-5 w-5 text-forest" />
-                            <h4 className="mt-3 text-base font-medium text-forest">{item.title}</h4>
-                            <p className="mt-2 text-sm leading-6 text-ink/82">{item.text}</p>
-                          </div>
-                        );
-                      })}
+                    <h3 className="mt-5 text-[17px] font-semibold text-forest">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-[13px] leading-5 text-forest/66">
+                      {item.description}
+                    </p>
+                    <div className="mt-auto pt-8">
+                      <p className="text-[12px] font-medium text-forest/82">
+                        {item.stat}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 3 — CONTINUOUSLY TEST (ANALYTICS PREVIEW) */}
+        <section id="features" className="section-block px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Continuous learning
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Continuously refine
+                <br />
+                <span className="font-serif italic font-normal">
+                  every trip
+                </span>
+              </h2>
+              <div className="reveal-element">
+                <p className="max-w-lg text-[15px] leading-7 text-forest/74">
+                  Nomy learns from every trip you plan — destinations saved,
+                  packing choices, and chat history all shape smarter
+                  recommendations for your next journey.
+                </p>
+                <a
+                  href="/features"
+                  className="button-pill mt-6 inline-flex items-center gap-2 rounded-full border border-forest/18 bg-white px-5 py-2.5 text-sm font-medium text-forest"
+                >
+                  Learn more about trip intelligence
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            <div className="reveal-element mt-16 overflow-hidden rounded-[28px]">
+              <div className="relative h-[560px] w-full md:h-[640px]">
+                <img
+                  src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=2000&q=80"
+                  alt="Dreamy travel landscape"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  style={{ filter: "blur(1px) saturate(1.1)" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-forest/30 via-forest/10 to-mint/25" />
+                <div className="absolute left-1/2 top-1/2 w-[90%] max-w-[640px] -translate-x-1/2 -translate-y-1/2 rounded-[20px] border border-white/30 bg-white/65 p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.5)] backdrop-blur-md md:p-8">
+                  <div className="flex items-center justify-between border-b border-forest/10 pb-3 text-[13px]">
+                    <div className="flex items-center gap-2 font-medium text-forest">
+                      <span className="h-2 w-2 rounded-full bg-mint" />
+                      Nomy · Trip Intelligence
+                    </div>
+                    <span className="text-forest/60">April 2026</span>
+                  </div>
+                  <div className="mt-5">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-forest/58">
+                      Trip Insights
+                    </p>
+                    <p className="mt-2 text-[22px] font-semibold tracking-tight text-forest">
+                      Packing accuracy: 94%
+                    </p>
+                    <p className="mt-1 text-[13px] font-medium text-forest/70">
+                      +12% vs. manual lists
+                    </p>
+                  </div>
+                  <div className="mt-6 h-32 w-full">
+                    <MiniChart />
+                  </div>
+                  <div className="mt-5 flex items-start gap-3 rounded-xl bg-[#F4EFE6] p-4">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-forest text-mint">
+                      <Sparkles className="h-3.5 w-3.5" />
+                    </div>
+                    <div>
+                      <p className="text-[13px] font-semibold text-forest">
+                        Tip
+                      </p>
+                      <p className="mt-1 text-[12.5px] leading-5 text-forest/72">
+                        For Goa in April, travelers add 2 more items on average
+                        — Nomy now suggests them by default.
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="reveal-element overflow-hidden rounded-[24px]"><img src={photoSet.storySide} alt="Travel companion detail" className="h-[240px] w-full object-cover md:h-[310px]" /></div>
             </div>
           </div>
         </section>
 
-        <section className="section-block px-4 py-6 md:px-6 md:pb-[150px]">
-          <div className="page-shell">
-            <div className="mb-20 text-center">
-              <p className="reveal-element text-sm text-forest/54">// Core Features</p>
-              <h2 className="reveal-element mx-auto mt-3 max-w-3xl font-extrabold text-[40px] leading-[1.06] tracking-[-0.04em] text-forest/90 md:text-[62px]">
-                Your Travel Toolkit:<br />Everything in One App.
+        {/* SECTION 4 — BUILT FOR REAL WORLD (2x2 grid) */}
+        <section className="section-block px-6 pb-24 md:pb-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Real trips across India
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Built for the
+                <br />
+                <span className="font-serif italic font-normal">
+                  real world
+                </span>
               </h2>
-              <p className="reveal-element mx-auto mt-4 max-w-xl text-base leading-7 text-ink/82">Packing, planning, discovery, and AI travel chat — built to make your journey feel lighter from day one.</p>
+              <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
+                From coastal getaways to high-altitude expeditions, Nomy adapts
+                to the rhythm of Indian travel — weather, terrain, culture, and
+                logistics are all understood before your trip begins.
+              </p>
             </div>
 
-            <div ref={railViewportRef} className="reveal-element overflow-hidden">
-              <div ref={railTrackRef} className="flex cursor-grab gap-6">
-                {featureCards.map((card) => {
-                  const Icon = card.icon;
-                  return (
-                    <article key={card.title} className="min-w-[82vw] rounded-[28px] bg-forest p-6 text-white sm:min-w-[420px] md:min-w-[760px] md:p-7">
-                      <div className="flex items-start justify-between gap-4 md:gap-8">
-                        <div className="min-w-0">
-                          <p className="text-sm text-[#3DDBC8]">{card.index}</p>
-                          <h3 className="mt-3 max-w-[420px] font-extrabold text-[32px] leading-[1.02] tracking-[-0.04em] md:text-[54px]">{card.title}</h3>
-                        </div>
-                        <div className="glass-chip hidden w-[210px] shrink-0 rounded-[22px] p-3 text-white sm:block">
-                          <img src={card.place.image} alt={card.place.name} className="h-28 w-full rounded-[14px] object-cover" />
-                          <div className="mt-3 rounded-[14px] bg-white/12 p-3 backdrop-blur-md">
-                            <div className="text-sm uppercase tracking-[0.18em] text-white/72">Featured Place</div>
-                            <div className="mt-2 text-xl font-medium">{card.place.name}</div>
-                            <div className="mt-2 text-sm text-white/72">{card.place.subtitle}</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="mt-8 flex h-16 w-16 items-center justify-center rounded-full bg-[#0D3349] text-[#3DDBC8]"><Icon className="h-8 w-8" /></div>
-                      <p className="mt-8 max-w-[560px] text-lg leading-9 text-white/74">{card.text}</p>
-                      <div className="mt-10 grid grid-cols-3 gap-8 border-t border-white/12 pt-5 text-sm">
-                        <div><p className="text-white/44">{card.meta[0]}</p><p className="mt-2 text-xl text-white">{card.meta[1]}</p></div>
-                        <div><p className="text-white/44">Availability</p><p className="mt-2 text-xl text-white">24/7</p></div>
-                        <div><p className="text-white/44">Experience</p><p className="mt-2 text-xl text-white">Premium</p></div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="reveal-element mt-8 flex justify-center"><a href="#download" className="button-pill rounded-pill bg-mint px-7 py-3 text-md font-medium text-forest">Download on Android</a></div>
-          </div>
-        </section>
-
-        <section className="section-block px-4 py-12 md:px-6 md:py-[150px]">
-          <div className="page-shell">
-            <div className="grid gap-4 md:grid-cols-3">
-              {communityPhotos.slice(0, 4).map((src) => <PhotoTile key={src} src={src} />)}
-              <div className="reveal-element flex min-h-[280px] flex-col items-center justify-center rounded-[18px] bg-[#FBF7F0] px-6 text-center">
-                <h2 className="font-extrabold text-[48px] leading-[1.02] tracking-[-0.04em] text-forest/90">Trips shaped<br />by real travelers.</h2>
-                <a href="#download" className="button-pill mt-8 rounded-pill bg-forest px-7 py-3 text-sm font-medium text-white">Download Nomy Free</a>
-              </div>
-              {communityPhotos.slice(4).map((src) => <PhotoTile key={src} src={src} />)}
-            </div>
-          </div>
-        </section>
-
-        <section className="section-block bg-forest px-4 py-12 md:px-6 md:py-[150px]">
-          <div className="page-shell">
-            <div className="text-center mb-12">
-              <p className="reveal-element text-sm text-[#3DDBC8]">// What Travelers Say</p>
-              <h2 className="reveal-element mt-3 font-extrabold text-[40px] leading-[1.06] tracking-[-0.04em] text-white md:text-[60px]">Real Travelers. Real Trips.</h2>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {testimonials.map((t) => (
-                <div key={t.handle} className="reveal-element flex flex-col rounded-[24px] bg-[#FBF7F0] p-6 shadow-soft border border-[#D6C9B6]">
-                  <p className="text-base leading-8 text-ink/82 flex-1">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="mt-6 flex items-center gap-3">
-                    <img src={t.avatar} alt={t.name} className="h-10 w-10 rounded-full object-cover" />
-                    <div>
-                      <p className="text-sm font-medium text-forest">{t.name}</p>
-                      <p className="text-xs text-forest/70">{t.handle}</p>
-                    </div>
+            <div className="reveal-element mt-14 grid gap-4 md:grid-cols-2">
+              {realWorldCards.map((card) => (
+                <div
+                  key={card.label}
+                  className="group relative h-[340px] overflow-hidden rounded-[22px] md:h-[420px]"
+                >
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute left-6 top-6">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/16 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.15em] text-white backdrop-blur">
+                      <span className="h-1.5 w-1.5 rounded-full bg-mint" />
+                      {card.label}
+                    </span>
+                  </div>
+                  <div className="absolute inset-x-6 bottom-6">
+                    <h3 className="max-w-md font-semibold text-[24px] leading-tight tracking-tight text-white md:text-[28px]">
+                      {card.title}
+                    </h3>
+                    <a
+                      href="#download"
+                      className="mt-4 inline-flex items-center gap-1 text-[13px] font-medium text-white/90 transition hover:text-white"
+                    >
+                      Learn more <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
                   </div>
                 </div>
               ))}
@@ -434,141 +449,464 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="reviews" className="section-block bg-[#EDE8DF] px-4 py-12 md:px-6 md:py-[150px]">
-          <div className="page-shell">
-            <div className="grid gap-8 md:grid-cols-[1fr_0.7fr] md:items-start">
-              <div>
-                <p className="reveal-element text-sm text-forest/54">// What Travelers Get</p>
-                <h2 className="reveal-element mt-3 max-w-3xl font-extrabold text-[42px] leading-[1.02] tracking-[-0.04em] text-forest/90 md:text-[64px]">
-                  Every Feature Built
-                  <br />
-                  for Smarter Travel.
-                </h2>
+        {/* SECTION 5 — FUEL DECISION INTELLIGENCE (chat + profile) */}
+        <section className="section-block px-6 pb-24 md:pb-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Contextual travel intelligence
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Fuel trip decisions
+                <br />
+                <span className="font-serif italic font-normal">
+                  with rich context
+                </span>
+              </h2>
+              <div className="reveal-element">
+                <p className="max-w-lg text-[15px] leading-7 text-forest/74">
+                  Nomy combines destination context, past trips, weather, and
+                  saved places to give you answers that feel personal — not
+                  generic search results.
+                </p>
+                <a
+                  href="/features"
+                  className="button-pill mt-6 inline-flex items-center gap-2 rounded-full border border-forest/18 bg-white px-5 py-2.5 text-sm font-medium text-forest"
+                >
+                  See how Nomy thinks
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
               </div>
-              <p className="reveal-element max-w-md text-base leading-8 text-ink/82">From packing smart to discovering hidden gems, Nomy covers every step of your journey — before, during, and after.</p>
             </div>
 
-            <div className="mt-16 grid gap-4 md:grid-cols-4">
-              <ReviewImageCard className="reveal-element" image="https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=800&q=80" />
-              <ReviewTextCard
-                className="reveal-element"
-                title="Smart Packing"
-                text="AI-curated packing lists that adapt to your destination, trip length, and weather. Stop overpacking for good."
-              />
-              <ReviewImageCard className="reveal-element" image="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80" />
-              <ReviewTextCard
-                className="reveal-element"
-                title="Explore Nearby"
-                text="Discover places worth visiting close to you — restaurants, landmarks, and hidden spots that locals actually recommend."
-                dark
-              />
-              <ReviewTextCard
-                className="reveal-element"
-                title="AI Travel Chat"
-                text="Ask anything about your destination and get real, contextual answers. No more switching between five different apps."
-                muted
-              />
-              <ReviewImageCard className="reveal-element" image="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" />
-              <ReviewTextCard
-                className="reveal-element"
-                title="Works Offline"
-                text="Packing lists and saved trips stay accessible even when your network drops mid-journey. Built for real India travel."
-                bg="bg-[#6846b4]"
-              />
-              <ReviewImageCard className="reveal-element" image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" />
+            <div className="reveal-element relative mt-16 overflow-hidden rounded-[28px]">
+              <div
+                className="relative h-[640px] w-full"
+                style={{
+                  background:
+                    "linear-gradient(-120deg, #4a6ab9 0%, #9b6cb0 35%, #d9905f 75%, #e9b478 100%)"
+                }}
+              >
+                <div className="absolute inset-0 grid place-items-center px-4 md:grid-cols-[1fr_420px]">
+                  <div className="relative z-10 mx-auto w-full max-w-[520px] md:justify-self-center">
+                    <div className="rounded-[22px] bg-white/96 p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.4)] backdrop-blur-md md:p-7">
+                      <div className="flex items-center gap-4 border-b border-forest/10 pb-4">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-forest text-white">
+                          <span className="text-sm font-semibold">PN</span>
+                        </div>
+                        <div>
+                          <p className="text-[16px] font-semibold text-forest">
+                            {travelerCard.name}
+                          </p>
+                          <p className="text-[12px] text-forest/60">
+                            {travelerCard.role}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="mt-5">
+                        <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-forest/55">
+                          Trip Information
+                        </p>
+                        <div className="mt-3 grid grid-cols-3 gap-4 text-[13px]">
+                          <div>
+                            <p className="text-forest/55">Status</p>
+                            <p className="mt-1 font-medium text-forest">Active</p>
+                          </div>
+                          <div>
+                            <p className="text-forest/55">Route</p>
+                            <p className="mt-1 font-medium text-forest">
+                              {travelerCard.location}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-forest/55">Dates</p>
+                            <p className="mt-1 font-medium text-forest">
+                              {travelerCard.trip}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-5 rounded-xl bg-[#F4EFE6] p-4">
+                        <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-forest/55">
+                          Summary
+                        </p>
+                        <p className="mt-2 text-[13px] leading-6 text-forest/82">
+                          {travelerCard.summary}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative z-10 hidden w-full max-w-[420px] md:block">
+                    <div className="flex flex-col overflow-hidden rounded-[22px] border border-white/40 bg-white/96 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)] backdrop-blur-md">
+                      <div className="flex items-center justify-between border-b border-forest/10 bg-[#F9F4EA] px-5 py-3.5">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-forest text-mint">
+                            <Bot className="h-4 w-4" />
+                          </div>
+                          <div>
+                            <p className="text-[13px] font-semibold leading-tight text-forest">
+                              Nomy AI
+                            </p>
+                            <p className="flex items-center gap-1.5 text-[11px] text-forest/60">
+                              <span className="h-1.5 w-1.5 rounded-full bg-mint" />
+                              online · replies instantly
+                            </p>
+                          </div>
+                        </div>
+                        <span className="rounded-full bg-forest/8 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-forest/72">
+                          Live
+                        </span>
+                      </div>
+
+                      <div className="flex flex-col gap-3 px-5 py-5">
+                        {chatMessages.map((msg, i) => {
+                          const isUser = msg.side === "left";
+                          return (
+                            <div
+                              key={i}
+                              className={cn(
+                                "flex items-end gap-2",
+                                isUser ? "justify-end" : "justify-start"
+                              )}
+                            >
+                              {!isUser && (
+                                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-forest text-mint">
+                                  <Bot className="h-3.5 w-3.5" />
+                                </div>
+                              )}
+                              <div
+                                className={cn(
+                                  "max-w-[260px] px-4 py-2.5 text-[12.5px] leading-[1.5]",
+                                  isUser
+                                    ? "rounded-[16px] rounded-br-[4px] bg-forest text-white"
+                                    : "rounded-[16px] rounded-bl-[4px] bg-[#F4EFE6] text-forest"
+                                )}
+                              >
+                                {!isUser && (
+                                  <p className="mb-1 text-[9.5px] font-semibold uppercase tracking-[0.15em] text-forest/55">
+                                    Nomy AI
+                                  </p>
+                                )}
+                                {msg.text}
+                              </div>
+                              {isUser && (
+                                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-forest/10 text-[10px] font-semibold text-forest">
+                                  PN
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+
+                        <div className="flex items-end gap-2">
+                          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-forest text-mint">
+                            <Bot className="h-3.5 w-3.5" />
+                          </div>
+                          <div className="flex items-center gap-1.5 rounded-[16px] rounded-bl-[4px] bg-[#F4EFE6] px-4 py-3">
+                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-forest/50" />
+                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-forest/50 [animation-delay:0.15s]" />
+                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-forest/50 [animation-delay:0.3s]" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="border-t border-forest/10 bg-white px-4 py-3">
+                        <div className="flex items-center gap-2 rounded-full border border-forest/12 bg-[#F9F4EA] px-4 py-2.5">
+                          <span className="flex-1 text-[12px] text-forest/50">
+                            Ask Nomy anything about your trip…
+                          </span>
+                          <button
+                            type="button"
+                            className="flex h-7 w-7 items-center justify-center rounded-full bg-forest text-mint"
+                          >
+                            <ArrowUpRight className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="download" className="section-block px-4 py-12 md:px-6 md:py-[150px]">
-          <div className="page-shell">
-            <div className="reveal-element relative overflow-hidden rounded-[28px]">
-              <div className="absolute inset-0">
-                <img src={photoSet.cta} alt="Travel destination aerial" className="h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,61,46,0.78),rgba(0,61,46,0.18))]" />
-              </div>
-              <div className="relative grid gap-8 px-6 py-16 md:grid-cols-[1fr_300px] md:items-start md:px-10 md:py-24">
-                <div className="text-white">
-                  <p className="text-sm text-white/78">// Download Now</p>
-                  <h2 className="mt-4 max-w-3xl font-extrabold text-[38px] leading-[1.02] tracking-[-0.04em] md:text-[60px]">Nomy is on Android.<br />Start Your Journey Free.</h2>
-                  <p className="mt-8 max-w-lg text-[22px] leading-9 md:mt-16 md:text-[28px]">Pack lighter. Explore smarter. Your AI travel companion is ready — available free on Android.</p>
-                  <a href="#" className="button-pill mt-10 inline-flex rounded-pill bg-mint px-8 py-4 text-sm font-medium text-forest">Download on Android</a>
+        {/* SECTION 6 — PROACTIVE OPERATIONS (left features, right illustration) */}
+        <section className="section-block bg-[#F0E9D9] px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // The new travel model
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:items-end md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Proactive,
+                <br />
+                <span className="font-serif italic font-normal">
+                  intelligent travel
+                </span>
+              </h2>
+              <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
+                One intelligent travel system that delivers consistently useful
+                outcomes — plans, packing, discovery, and real-time answers all
+                working together.
+              </p>
+            </div>
+
+            <div className="mt-14 grid gap-10 md:grid-cols-[1fr_1.05fr] md:items-center">
+              <div className="reveal-element">
+                <a
+                  href="#download"
+                  className="button-pill inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white"
+                >
+                  Download Free
+                </a>
+                <div className="mt-10 space-y-0 border-t border-forest/15">
+                  {impactFeatures.map((item, idx) => (
+                    <div
+                      key={item.title}
+                      className="flex flex-col gap-2 border-b border-forest/15 py-6 md:flex-row md:items-start md:justify-between md:gap-10"
+                    >
+                      <div>
+                        <p className="text-[16px] font-semibold text-forest">
+                          {item.title}
+                        </p>
+                        <p className="mt-2 max-w-md text-[13px] leading-6 text-forest/68">
+                          {item.text}
+                        </p>
+                      </div>
+                      <span className="text-xs font-medium tracking-[0.15em] text-forest/45 md:pt-1">
+                        0{idx + 1}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-                <div className="h-fit rounded-[22px] bg-[#FBF7F0] p-5 shadow-soft">
-                  <div className="rounded-[18px] bg-mint p-3"><img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=500&q=80" alt="Nomy app preview" className="h-44 w-full rounded-[14px] object-cover" /></div>
-                  <div className="mt-5 font-extrabold text-5xl leading-none text-forest">Free</div>
-                  <p className="mt-3 max-w-[220px] text-sm leading-6 text-ink/82">Download free on Android. Smart packing, AI chat, and trip planning — all in one app.</p>
+              </div>
+
+              <div className="reveal-element flex items-center justify-center">
+                <TripFlow />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 7 — DESIGNED FOR SCALE */}
+        <section className="section-block px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Reliable infrastructure
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Designed for
+                <br />
+                <span className="font-serif italic font-normal">
+                  every traveler
+                </span>
+              </h2>
+              <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
+                Nomy is built on top of a resilient infrastructure — Firebase
+                sync, offline caching, Google Places, and OpenAI — to deliver
+                consistently fast, personalized trips.
+              </p>
+            </div>
+
+            <div className="reveal-element mt-14 grid gap-4 md:grid-cols-2">
+              <div className="flex min-h-[540px] flex-col rounded-[24px] border border-forest/10 bg-white p-8 shadow-soft md:p-10">
+                <div className="flex items-center justify-between border-b border-forest/10 pb-5">
+                  <div className="flex items-center gap-2.5 text-[14px] font-medium text-forest">
+                    <BarChart3 className="h-[18px] w-[18px]" />
+                    Packing Performance
+                  </div>
+                  <span className="text-[12px] text-forest/50">
+                    Last 7 trips
+                  </span>
+                </div>
+                <div className="mt-8 flex flex-1 items-end justify-between gap-3 pb-2">
+                  {[42, 72, 58, 94, 85, 63, 88].map((h, i) => (
+                    <div
+                      key={i}
+                      className="flex flex-1 flex-col items-center gap-2"
+                    >
+                      <div
+                        className="w-full rounded-md bg-gradient-to-t from-forest to-mint"
+                        style={{ height: `${h * 2.2}px` }}
+                      />
+                      <span className="text-[11px] text-forest/55">
+                        T{i + 1}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8 flex items-center justify-between border-t border-forest/10 pt-5 text-[13px] text-forest/68">
+                  <span>Goa</span>
+                  <span>Accuracy avg</span>
+                  <span className="text-[15px] font-semibold text-forest">
+                    94%
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex min-h-[540px] flex-col rounded-[24px] border border-forest/10 bg-white p-8 shadow-soft md:p-10">
+                <div className="flex items-center justify-between border-b border-forest/10 pb-5">
+                  <div className="flex items-center gap-2.5 text-[14px] font-medium text-forest">
+                    <Settings2 className="h-[18px] w-[18px]" />
+                    Trip Preferences
+                  </div>
+                  <span className="text-[12px] text-forest/50">Live</span>
+                </div>
+                <div className="mt-6 flex-1 space-y-3">
+                  {[
+                    { label: "Trip type", value: "Beach · Family" },
+                    { label: "Duration", value: "5 days" },
+                    { label: "Weather", value: "32°C · Humid" },
+                    { label: "Offline mode", value: "Enabled" }
+                  ].map((row) => (
+                    <div
+                      key={row.label}
+                      className="flex items-center justify-between rounded-xl bg-[#F4EFE6] px-4 py-3.5 text-[13.5px]"
+                    >
+                      <span className="text-forest/62">{row.label}</span>
+                      <span className="font-medium text-forest">
+                        {row.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 flex items-center gap-3 rounded-xl border border-forest/10 px-4 py-3.5 text-[13px]">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-mint/40 text-forest">
+                    <Check className="h-3.5 w-3.5" />
+                  </div>
+                  <span className="text-forest/78">
+                    Synced across your devices
+                  </span>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="mt-24 reveal-element rounded-[28px] border border-[#D6C9B6] bg-[#FBF7F0] p-8 shadow-soft md:p-12">
-              <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
-                <div>
-                  <p className="text-sm text-forest/54">// Early Access</p>
-                  <h2 className="mt-3 max-w-lg font-extrabold text-[38px] leading-[1.04] tracking-[-0.04em] text-forest md:text-[52px]">Be the First to<br />Travel with Nomy.</h2>
-                  <p className="mt-4 max-w-md text-base leading-7 text-ink/82">Join the waitlist and get early access when Nomy launches on the Play Store. Free forever for early users.</p>
-                  <div className="mt-8 flex max-w-[420px] flex-col gap-3 sm:flex-row">
-                    <input type="email" placeholder="Enter your email..." className="flex-1 rounded-pill border border-border bg-[#FBF7F0] px-5 py-3.5 text-md placeholder:text-ink/60 outline-none focus:border-forest/30" />
-                    <button type="button" className="button-pill rounded-pill bg-forest px-6 py-3.5 text-md font-medium text-white whitespace-nowrap">Join Waitlist</button>
-                  </div>
-                  <p className="mt-3 text-xs text-forest/65">No spam. Just your launch notification.</p>
+        {/* SECTION 8 — OPTIMIZED FOR IMPACT */}
+        <section className="section-block px-6 pb-24 md:pb-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Traveler success
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Optimized
+                <br />
+                <span className="font-serif italic font-normal">
+                  for impact
+                </span>
+              </h2>
+              <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
+                Our travel-first approach combines real traveler workflows
+                with AI reasoning — built to deliver calm, useful, repeatable
+                trip outcomes.
+              </p>
+            </div>
+
+            <div className="reveal-element mt-14 grid gap-10 border-t border-forest/15 pt-10 md:grid-cols-3">
+              {impactStats.map((stat) => (
+                <div key={stat.name}>
+                  <p className="text-[18px] font-semibold text-forest">
+                    {stat.name}
+                  </p>
+                  <p className="mt-3 max-w-xs text-[13px] leading-6 text-forest/68">
+                    {stat.text}
+                  </p>
                 </div>
-                <div className="hidden md:block text-right">
-                  <div className="inline-flex flex-col items-center gap-2 rounded-[22px] bg-[#FBF7F0] p-6 border border-[#D6C9B6]">
-                    <div className="font-extrabold text-[64px] leading-none text-forest">Free</div>
-                    <p className="text-sm text-forest/70">Available on Android</p>
-                    <div className="mt-2 rounded-pill bg-mint px-4 py-2 text-xs font-medium text-forest">Early Access</div>
-                  </div>
-                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA — REPEAT HERO */}
+        <section id="download" className="section-block px-6 pb-24">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element relative overflow-hidden rounded-[24px] bg-[#F0E9D9]">
+              <div className="px-6 py-24 text-center md:py-32">
+                <h2 className="mx-auto max-w-[760px] font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[60px]">
+                  Intelligence that plans{" "}
+                  <span className="font-serif italic font-normal">
+                    your journeys
+                  </span>
+                </h2>
+                <a
+                  href="#"
+                  className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-medium text-white"
+                >
+                  <Download className="h-4 w-4" />
+                  Download Free on Android
+                </a>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-forest px-5 py-14 md:px-6 md:pt-24">
-        <div className="page-shell text-white">
-          <div className="grid gap-10 md:grid-cols-[1.25fr_0.8fr_0.8fr_0.8fr] md:gap-14">
+      {/* FOOTER */}
+      <footer className="bg-[#F4EFE6] px-6 pb-10">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="grid gap-10 border-t border-forest/15 pt-12 md:grid-cols-[1.2fr_repeat(4,1fr)]">
             <div>
-              <p className="text-2xl font-medium md:text-[30px]">Newsletter</p>
-              <div className="mt-7 flex max-w-[420px] flex-col gap-3 sm:flex-row sm:items-center sm:rounded-pill sm:bg-white sm:p-2 sm:gap-0">
-                <input type="email" placeholder="Enter your email..." className="w-full rounded-pill border border-white/20 bg-white/10 px-4 py-3 text-base text-white outline-none placeholder:text-white/50 sm:rounded-none sm:border-0 sm:bg-transparent sm:text-ink sm:placeholder:text-ink/60" />
-                <button type="button" className="button-pill flex h-14 w-14 shrink-0 items-center justify-center self-start rounded-full bg-forest text-mint sm:self-auto"><CircleArrowUp className="h-6 w-6" /></button>
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/images/branding/logo.png"
+                  alt="Nomy"
+                  width={32}
+                  height={32}
+                  className="h-12 w-12 rounded-full"
+                />
+                <span className="text-[22px] font-semibold tracking-tight text-forest">
+                  nomy
+                </span>
               </div>
-              <p className="mt-6 max-w-sm text-base leading-8 text-white/72">Get travel tips, packing guides, and Nomy updates in your inbox.</p>
+              <p className="mt-4 max-w-xs text-[13px] leading-6 text-forest/62">
+                Your AI travel companion for India. <br /> Travel light. Travel smart.
+              </p>
             </div>
             {Object.entries(footerLinks).map(([label, links]) => (
               <div key={label}>
-                <p className="text-2xl font-medium md:text-[30px]">{label}</p>
-                <div className="mt-7 space-y-4">{links.map((link) => {
-                  const href =
-                    link === "Privacy Policy" ? "/privacy" :
-                    link === "Terms of Service" ? "/terms" :
-                    link === "Contact" ? "/contact" :
-                    link === "Features" ? "/features" :
-                    link === "About Us" ? "/about" :
-                    link === "How It Works" ? "/#how-it-works" :
-                    link === "Download" ? "/#download" :
-                    "#";
-                  return <a key={link} href={href} className="block text-base text-white/78 transition hover:text-white md:text-lg">{link}</a>;
-                })}</div>
+                <p className="text-[12px] font-medium uppercase tracking-[0.15em] text-forest/58">
+                  {label}
+                </p>
+                <div className="mt-5 space-y-3">
+                  {links.map((link) => {
+                    const href =
+                      link === "Privacy Policy"
+                        ? "/privacy"
+                        : link === "Terms of Service"
+                        ? "/terms"
+                        : link === "Contact"
+                        ? "/contact"
+                        : link === "Features"
+                        ? "/features"
+                        : link === "Destinations"
+                        ? "/destinations"
+                        : link === "About Us"
+                        ? "/about"
+                        : link === "Download"
+                        ? "/#download"
+                        : "#";
+                    return (
+                      <a
+                        key={link}
+                        href={href}
+                        className="block text-[13px] text-forest/72 transition hover:text-forest"
+                      >
+                        {link}
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
             ))}
           </div>
-          <div className="mt-16 grid gap-10 border-b border-white/10 pb-12 text-lg md:mt-24 md:grid-cols-3 md:gap-8">
-            <div><p className="text-white/52">Email Us</p><p className="mt-3 text-[22px]">hello@nomy.app</p></div>
-            <div><p className="text-white/52">Based In</p><p className="mt-3 text-[22px]">India — Built for Indian Travelers</p></div>
-            <div><p className="text-white/52">Available On</p><p className="mt-3 text-[22px]">Android (iOS coming soon)</p></div>
-          </div>
-          <div className="mt-4 rounded-[18px] bg-[#FBF7F0] px-5 py-6 text-forest md:px-6 md:py-8">
-            <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-              <div>
-                <div className="flex items-center gap-3"><Image src="/images/branding/logo-g.png" alt="Nomy" width={38} height={38} className="h-10 w-10 rounded-full" /><div><div className="text-lg font-semibold">Nomy</div><div className="text-xs uppercase tracking-[0.2em] text-forest/62">Travel Guide</div></div></div>
-                <div className="mt-6 flex flex-wrap gap-2">{["Facebook", "Instagram", "LinkedIn", "Medium"].map((item) => <a key={item} href="#" className="button-pill rounded-pill bg-white px-5 py-3 text-base">{item}</a>)}</div>
-              </div>
-              <p className="max-w-xl text-left text-base leading-7 md:text-right">© 2026 Nomy — Travel Light. Travel Smart. Made with ♥ in India.</p>
-            </div>
+          <div className="mt-12 flex flex-col items-start justify-between gap-2 border-t border-forest/15 pt-6 text-[12px] text-forest/55 md:flex-row md:items-center">
+            <span>© 2026 Nomy — Travel Light. Travel Smart.</span>
+            <span>Made with ♥ in India · Available free on Android</span>
           </div>
         </div>
       </footer>
@@ -576,94 +914,120 @@ export default function HomePage() {
   );
 }
 
-function PhotoTile({ src }: { src: string }) {
+function MiniChart() {
   return (
-    <div className="community-tile reveal-element overflow-hidden rounded-[18px]">
-      <img src={src} alt="Travel community" className="h-[250px] w-full object-cover md:h-[300px]" />
-    </div>
+    <svg viewBox="0 0 400 120" className="h-full w-full">
+      <defs>
+        <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#3DDBC8" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#3DDBC8" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M 0,80 L 50,70 L 100,74 L 150,50 L 200,56 L 250,40 L 300,30 L 350,24 L 400,18 L 400,120 L 0,120 Z"
+        fill="url(#chartGrad)"
+      />
+      <path
+        d="M 0,80 L 50,70 L 100,74 L 150,50 L 200,56 L 250,40 L 300,30 L 350,24 L 400,18"
+        fill="none"
+        stroke="#003D2E"
+        strokeWidth="2"
+      />
+      <path
+        d="M 0,95 L 50,88 L 100,92 L 150,78 L 200,82 L 250,68 L 300,64 L 350,56 L 400,50"
+        fill="none"
+        stroke="#3DDBC8"
+        strokeWidth="2"
+        strokeDasharray="4 4"
+      />
+      {[0, 50, 100, 150, 200, 250, 300, 350].map((x) => (
+        <circle key={x} cx={x} cy={80 - x * 0.15} r="3" fill="#003D2E" />
+      ))}
+    </svg>
   );
 }
 
-function ReviewMediaCard({
-  title,
-  text,
-  image,
-  className
-}: {
-  title: string;
-  text: string;
-  image: string;
-  className?: string;
-}) {
+function TripFlow() {
+  const steps = [
+    {
+      icon: MapPinned,
+      label: "Destination Context",
+      detail: "Goa · April · Coastal · Humid",
+      badge: "Auto-detected",
+      badgeColor: "bg-blue-50 text-blue-700"
+    },
+    {
+      icon: Backpack,
+      label: "Smart Packing",
+      detail: "23 items generated in 30s",
+      badge: "✓ Ready",
+      badgeColor: "bg-mint/20 text-forest"
+    },
+    {
+      icon: Bot,
+      label: "AI Travel Chat",
+      detail: "Context-aware answers, live",
+      badge: "● Online",
+      badgeColor: "bg-forest/8 text-forest"
+    },
+    {
+      icon: Compass,
+      label: "Nearby Discovery",
+      detail: "Food · Stays · Landmarks",
+      badge: "12 places",
+      badgeColor: "bg-amber-50 text-amber-700"
+    },
+    {
+      icon: WifiOff,
+      label: "Offline Ready",
+      detail: "Packing list cached locally",
+      badge: "✓ Synced",
+      badgeColor: "bg-mint/20 text-forest"
+    }
+  ];
+
   return (
-    <div className={cn("overflow-hidden rounded-[24px] bg-[#FBF7F0] shadow-soft", className)}>
-      <img src={image} alt={title} className="h-[300px] w-full object-cover" />
-      <div className="p-6">
-        <h3 className="text-[22px] leading-tight text-forest">{title}</h3>
-        <p className="mt-8 text-sm leading-7 text-ink/82">{text}</p>
-        <a href="#" className="mt-7 inline-block text-sm font-medium text-forest underline underline-offset-4">More Information</a>
+    <div className="w-full max-w-[440px]">
+      <div className="overflow-hidden rounded-[22px] border border-forest/10 bg-white shadow-[0_20px_60px_-20px_rgba(0,61,46,0.18)]">
+        <div className="flex items-center justify-between border-b border-forest/10 bg-[#F9F4EA] px-5 py-4">
+          <div>
+            <p className="text-[13px] font-semibold text-forest">Goa · Family Trip</p>
+            <p className="text-[11px] text-forest/55">Apr 14 — Apr 19 · 5 days</p>
+          </div>
+          <span className="flex items-center gap-1.5 rounded-full bg-mint/25 px-3 py-1 text-[11px] font-medium text-forest">
+            <span className="h-1.5 w-1.5 rounded-full bg-forest animate-pulse" />
+            Active
+          </span>
+        </div>
+        <div className="divide-y divide-forest/8">
+          {steps.map((step, i) => {
+            const Icon = step.icon;
+            return (
+              <div key={step.label} className="flex items-center gap-4 px-5 py-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest/6 text-forest">
+                  <Icon className="h-[18px] w-[18px]" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-semibold text-forest">{step.label}</p>
+                  <p className="mt-0.5 truncate text-[11.5px] text-forest/55">{step.detail}</p>
+                </div>
+                <span className={`shrink-0 rounded-full px-2.5 py-1 text-[10.5px] font-medium ${step.badgeColor}`}>
+                  {step.badge}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+        <div className="border-t border-forest/10 bg-[#F9F4EA] px-5 py-3.5">
+          <div className="flex items-center justify-between text-[12px]">
+            <span className="text-forest/55">Trip readiness</span>
+            <span className="font-semibold text-forest">100%</span>
+          </div>
+          <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-forest/10">
+            <div className="h-full w-full rounded-full bg-gradient-to-r from-forest to-mint" />
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
-function ReviewHybridCard({
-  title,
-  text,
-  image,
-  dark,
-  muted,
-  className
-}: {
-  title: string;
-  text: string;
-  image?: string;
-  dark?: boolean;
-  muted?: boolean;
-  className?: string;
-}) {
-  if (image) {
-    return <ReviewMediaCard title={title} text={text} image={image} className={className} />;
-  }
-
-  return <ReviewTextCard title={title} text={text} dark={dark} muted={muted} className={className} />;
-}
-
-function ReviewTextCard({
-  title,
-  text,
-  dark,
-  muted,
-  bg,
-  className
-}: {
-  title: string;
-  text: string;
-  dark?: boolean;
-  muted?: boolean;
-  bg?: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "flex h-[260px] flex-col justify-between rounded-[24px] p-6 shadow-soft text-white md:h-[300px]",
-        dark ? "bg-[#0D3349]" : muted ? "bg-[#B55E3E]" : bg ? bg : "bg-[#1c9593]",
-        className
-      )}
-    >
-      <h3 className="text-[28px] leading-tight">{title}</h3>
-      <p className={cn("text-md leading-7", dark || muted ? "text-white/70" : "text-white/85")}>{text}</p>
-    </div>
-  );
-}
-
-function ReviewImageCard({ image, className }: { image: string; className?: string }) {
-  return (
-    <div className={cn("h-[260px] overflow-hidden rounded-[24px] shadow-soft md:h-[300px]", className)}>
-      <img src={image} alt="Customer review visual" className="h-full w-full object-cover" />
-    </div>
-  );
-}
-
-

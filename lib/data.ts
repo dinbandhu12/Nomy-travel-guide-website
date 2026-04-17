@@ -1,167 +1,197 @@
 import {
   Backpack,
+  Brain,
+  CheckCircle2,
+  Clock,
   Compass,
-  Leaf,
+  Database,
+  Download,
+  Globe2,
+  Layers,
+  LineChart,
   MapPinned,
+  MessageSquare,
+  Mountain,
   ShieldCheck,
-  Sparkles
+  Sparkles,
+  Sun,
+  Umbrella,
+  Waves,
+  WifiOff
 } from "lucide-react";
 
-export const navItems = ["Home", "Features", "About", "Contact"];
+export const navItems = ["About", "Features", "Destinations", "Contact"];
 
-export const quickFeatures = [
-  { label: "Smart Packing", icon: Backpack },
-  { label: "AI Travel Chat", icon: Sparkles },
-  { label: "Explore Nearby", icon: Compass },
-  { label: "Trip Planner", icon: MapPinned }
+export const destinationLogos = [
+  "Goa",
+  "Rajasthan",
+  "Kerala",
+  "Himachal",
+  "Ladakh",
+  "Mumbai"
 ];
 
-export const partnerLogos = [
-  "Google Maps",
-  "OpenAI",
-  "Firebase",
-  "Flutter",
-  "Unsplash",
-  "Riverpod"
+export const workflowFeatures = [
+  {
+    title: "AI packing reasoning that adapts to destination and trip length"
+  },
+  {
+    title: "Deterministic logic for curated lists that follow real travel rules"
+  },
+  {
+    title: "Native tools for Maps, Places, Chat, and planning in one flow"
+  }
 ];
 
-export const services = [
+export const useCases = [
   {
     title: "Smart Packing",
-    description: "Pack lighter with weather, destination, and trip-length aware suggestions."
+    description:
+      "Auto-curated lists built around destination, trip type, weather, and duration — no manual entries.",
+    stat: "30s to a complete packing list",
+    icon: Backpack
   },
   {
-    title: "AI Travel Guide",
-    description: "Get destination context, food ideas, and real-time trip help in one place.",
-    featured: true
-  },
-  {
-    title: "Seasonal Tips",
-    description: "Travel timing, crowd awareness, and climate notes before you book."
-  },
-  {
-    title: "Offline Maps",
-    description: "Keep routes, saved places, and key details ready even when signal drops."
-  }
-];
-
-export const featureCards = [
-  {
-    index: "[01]",
-    title: "AI Travel Guide: Context for every stop",
-    text: "Destination summaries, food spots, and quick answers without opening five other apps.",
-    meta: ["Mode", "Guide"],
-    icon: Sparkles,
-    place: {
-      name: "Jaipur, India",
-      subtitle: "The Pink City",
-      image: "https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=600&q=80"
-    }
-  },
-  {
-    index: "[02]",
-    title: "Trip Planner: Build a calmer timeline",
-    text: "Move from arrival to daily flow with clear, card-based trip structure and reminders.",
-    meta: ["Mode", "Planner"],
-    icon: Compass,
-    place: {
-      name: "Kerala, India",
-      subtitle: "Backwaters & spice trails",
-      image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    }
-  },
-  {
-    index: "[03]",
-    title: "Packing Flow: Travel lighter by default",
-    text: "Lists adapt to destination, weather, and duration so you stop overpacking the basics.",
-    meta: ["Mode", "Packing"],
-    icon: Backpack,
-    place: {
-      name: "Ladakh, India",
-      subtitle: "High-altitude escape",
-      image: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-    }
-  }
-];
-
-export const communityPhotos = [
-  "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1564507592333-c60657eea523?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-];
-
-export const testimonials = [
-  {
-    quote:
-      "Nomy helped me simplify an entire two-week trip into one calm travel flow. The packing guidance alone saved me from carrying way too much.",
-    name: "Priya Nair",
-    handle: "@priyanair",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    quote:
-      "It feels less like a generic travel app and more like a smart co-pilot that understands what I need next.",
-    name: "Rohan Sharma",
-    handle: "@rohansharma",
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    quote:
-      "The itinerary and nearby recommendations feel premium and surprisingly clear. It actually reduces planning friction.",
-    name: "Ananya Iyer",
-    handle: "@ananyaiyer",
-    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&q=80"
-  },
-  {
-    quote:
-      "I finally had one place for packing, maps, and ideas. That made the trip smoother from day one to landing back home.",
-    name: "Aarav Mehta",
-    handle: "@aaravmehta",
-    avatar: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=400&q=80"
-  }
-];
-
-export const footerLinks = {
-  "Quick Links": ["Home", "Features", "How It Works", "Download"],
-  Company: ["About Us", "Contact"],
-  Legal: ["Privacy Policy", "Terms of Service"]
-};
-
-export const photoSet = {
-  hero: "https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-  mission: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-  servicesLeft: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
-  servicesRight: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
-  storyMain: "https://images.unsplash.com/photo-1593693411515-c20261bcad6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80",
-  storySide: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
-  cta: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80",
-  article: "https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-};
-
-export const guideHighlights = [
-  {
-    title: "Context-aware suggestions",
-    text: "Nearby food, landmarks, and timing advice when you actually need them.",
+    title: "Nearby Discovery",
+    description:
+      "Real-time food spots, stays, and landmarks powered by Google Places — always close to you.",
+    stat: "100+ curated destinations",
     icon: Compass
   },
   {
-    title: "Privacy-friendly organization",
-    text: "Save what matters and keep key travel decisions easy to revisit.",
-    icon: ShieldCheck
+    title: "AI Travel Chat",
+    description:
+      "Ask culture, safety, food, or timing questions — get real contextual answers, not generic search.",
+    stat: "GPT-4o powered answers",
+    icon: Sparkles
   },
   {
-    title: "Travel flows that adapt",
-    text: "Trip details change fast, so your plan surfaces the next best move.",
-    icon: Leaf
-  },
-  {
-    title: "Offline confidence",
-    text: "Routes, plans, and saved places remain useful when your network does not.",
+    title: "Trip Planner",
+    description:
+      "Active, upcoming, and future trips in one calm view. Stays, dates, and daily structure in sync.",
+    stat: "3 trip slots built-in",
     icon: MapPinned
+  },
+  {
+    title: "Offline Ready",
+    description:
+      "Packing lists and saved trips stay accessible when network drops — built for real India travel.",
+    stat: "100% offline packing",
+    icon: WifiOff
   }
 ];
+
+export const realWorldCards = [
+  {
+    label: "GOA",
+    title: "Beach trips, simplified with AI-driven prep",
+    image:
+      "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    label: "RAJASTHAN",
+    title: "Desert itineraries without the planning chaos",
+    image:
+      "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    label: "KERALA",
+    title: "Backwaters, food trails, and offline maps ready",
+    image:
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    label: "HIMALAYAS",
+    title: "High altitude trips packed smart and light",
+    image:
+      "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1200&q=80"
+  }
+];
+
+export const impactFeatures = [
+  {
+    title: "AI workers plan autonomously",
+    text: "Nomy reasons over destination, season, and trip type to deliver ready-to-use packing and plans."
+  },
+  {
+    title: "Every trip builds context",
+    text: "Saved places, past chats, and curated destinations reinforce smarter future recommendations."
+  },
+  {
+    title: "Plans that flex with travel",
+    text: "Real-time changes, offline fallback, and adaptive suggestions keep the day moving calmly."
+  }
+];
+
+export const impactStats = [
+  {
+    name: "Speed",
+    text: "Generate a complete packing list in under 30 seconds — no manual entry, no friction."
+  },
+  {
+    name: "Coverage",
+    text: "Built for every Indian travel style — beach, mountain, city, religious, adventure, business."
+  },
+  {
+    name: "Free",
+    text: "Core features always free on Android. Premium unlocks unlimited AI chat and advanced tools."
+  }
+];
+
+export const chatMessages = [
+  {
+    side: "left",
+    text: "Planning a 5-day trip to Goa with my family. What should I pack for early April?"
+  },
+  {
+    side: "right",
+    text: "Light cottons, sunscreen SPF 50+, rain jacket (pre-monsoon showers), and power bank — Goa is 32°C with humid evenings."
+  },
+  {
+    side: "left",
+    text: "Any quiet beaches near Palolem that locals recommend?"
+  },
+  {
+    side: "right",
+    text: "Agonda and Patnem — both 15 minutes away, calmer crowds, great for sunset. Want me to save them to your trip?"
+  }
+];
+
+export const travelerCard = {
+  name: "Priya Nair",
+  role: "Traveler",
+  company: "Nomy User",
+  location: "Bengaluru → Goa",
+  trip: "April 14 — April 19",
+  summary:
+    "Priya is planning a family beach trip. Nomy reads destination, dates, and weather to build a 30-second packing list and suggests nearby food spots throughout her stay."
+};
+
+export const footerLinks = {
+  Overview: ["Features", "Destinations", "How It Works", "Download"],
+  Company: ["About Us", "Contact", "Careers"],
+  "News & Policies": ["Privacy Policy", "Terms of Service"],
+  Social: ["Instagram", "Facebook", "LinkedIn", "Twitter"]
+};
+
+export const iconMap = {
+  Brain,
+  Layers,
+  Globe2,
+  Sun,
+  Umbrella,
+  Waves,
+  Mountain,
+  MessageSquare,
+  LineChart,
+  Database,
+  Clock,
+  CheckCircle2,
+  Download,
+  ShieldCheck,
+  Sparkles,
+  Compass,
+  Backpack,
+  MapPinned,
+  WifiOff
+};

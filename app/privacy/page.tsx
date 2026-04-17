@@ -1,163 +1,159 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import PageNav from "@/components/page-nav";
+import PageFooter from "@/components/page-footer";
+import SmoothScroll from "@/components/smooth-scroll";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Nomy",
-  description: "How Nomy collects, uses, and protects your data.",
+  description: "How Nomy collects, uses, and protects your data."
 };
+
+const sections = [
+  {
+    title: "Information we collect",
+    body:
+      "We collect only what is necessary to operate Nomy — basic profile information (name, photo) from Google Sign-in, trip data you create (destinations, packing lists, notes, itineraries), approximate location when you use map or nearby features, and anonymous usage data to improve the app.",
+    list: [
+      "Google profile basics (name, avatar) when you sign in",
+      "Trip data — destinations, packing lists, notes, itineraries",
+      "Approximate location only when maps or nearby are used",
+      "Anonymous usage data to improve reliability and UX"
+    ]
+  },
+  {
+    title: "How we use your information",
+    body:
+      "All data is used solely to operate and improve Nomy — syncing trips across devices, providing context-aware AI answers, showing nearby recommendations, and keeping the app stable.",
+    list: [
+      "Sync trips and packing lists across your devices",
+      "Provide AI travel assistance relevant to your destination",
+      "Show nearby places and recommendations based on your location",
+      "Keep the app stable and fix issues as they arise"
+    ]
+  },
+  {
+    title: "What we don't do",
+    body:
+      "We avoid everything most travel apps don't — no advertising, no data sales, no dark patterns, no opaque tracking.",
+    list: [
+      "We do not sell your personal data to any third party",
+      "We do not use your data for advertising or tracking",
+      "We do not store your raw GPS location or history",
+      "We do not share your trip content with other users",
+      "We do not collect payment information — core features are free"
+    ]
+  },
+  {
+    title: "Third-party services",
+    body:
+      "Nomy uses trusted third-party services to power core features — authentication, cloud storage, maps, and AI responses. Each operates under its own privacy policy and is selected for reliability and data safety. No third party is granted access beyond what's required to deliver the feature."
+  },
+  {
+    title: "Data retention & deletion",
+    body:
+      "Your data is kept only while your account is active. You can delete your account and all associated data at any time from the Settings screen inside the app. Once deleted, your data is permanently removed from our systems."
+  },
+  {
+    title: "Children",
+    body:
+      "Nomy is not intended for children under 13. We do not knowingly collect data from children. If you believe a child has provided personal information, contact us and we will remove it promptly."
+  },
+  {
+    title: "Updates & contact",
+    body:
+      "We may update this policy as the app evolves. The effective date at the top always reflects the latest version. Questions or deletion requests — reach out through the contact page."
+  }
+];
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen" style={{ background: "#f0eeeb" }}>
-      {/* Header */}
-      <header className="border-b border-[#D6C9B6] bg-[#FBF7F0]/90 px-5 py-5 backdrop-blur-md md:px-6">
-        <div className="mx-auto flex max-w-8xl items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <Image src="/images/branding/logo.png" alt="Nomy" width={38} height={38} className="h-10 w-10 rounded-full" />
-            <div className="leading-tight">
-              <div className="text-lg font-semibold text-forest">Nomy</div>
-              <div className="text-xs uppercase tracking-[0.2em] text-forest/52">Travel Guide</div>
-            </div>
-          </Link>
-          <Link href="/" className="rounded-full border border-[#D6C9B6] bg-[#FBF7F0] px-5 py-2.5 text-sm text-forest/70 transition hover:text-forest">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <SmoothScroll>
+      <div className="min-h-screen bg-[#F4EFE6] text-forest">
+        <PageNav />
 
-      {/* Hero */}
-      <section className="bg-forest px-5 py-16 md:px-6 md:py-20">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-sm text-[#3DDBC8]">// Legal</p>
-          <h1 className="mt-3 font-extrabold text-[42px] leading-[1.02] tracking-[-0.04em] text-white md:text-[58px]">
-            Privacy Policy
-          </h1>
-          <p className="mt-4 text-base text-white/50">Effective date: April 16, 2026</p>
-          <p className="mt-5 max-w-xl text-base leading-8 text-white/70">
-            Your privacy matters to us. This page explains what data Nomy collects, why we collect it,
-            and how we keep it safe. We will never sell your data or use it for advertising.
-          </p>
+        {/* HERO */}
+        <section className="reveal-section px-6 pb-20 pt-20 md:pb-28 md:pt-28">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Legal
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h1 className="reveal-element font-semibold text-[44px] leading-[1.02] tracking-[-0.03em] text-forest md:text-[76px]">
+                Privacy
+                <br />
+                <span className="font-serif italic font-normal">policy</span>
+              </h1>
+              <div className="reveal-element">
+                <p className="text-[12px] font-medium uppercase tracking-[0.15em] text-forest/55">
+                  Effective date · April 17, 2026
+                </p>
+                <p className="mt-5 max-w-lg text-[15px] leading-7 text-forest/74">
+                  Your privacy matters to us. This page explains what data Nomy
+                  collects, why we collect it, and how we keep it safe. We will
+                  never sell your data or use it for advertising.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CONTENT */}
+        <section className="reveal-section px-6 pb-24 md:pb-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="border-t border-forest/15">
+              {sections.map((section, idx) => (
+                <div
+                  key={section.title}
+                  className="reveal-element grid gap-6 border-b border-forest/15 py-10 md:grid-cols-[1fr_2fr] md:gap-16 md:py-12"
+                >
+                <div className="flex items-start gap-4">
+                  <span className="text-xs font-medium tracking-[0.15em] text-forest/45 md:pt-1">
+                    0{idx + 1}
+                  </span>
+                  <h2 className="font-semibold text-[22px] leading-tight tracking-tight text-forest">
+                    {section.title}
+                  </h2>
+                </div>
+                <div>
+                  <p className="text-[14px] leading-7 text-forest/72">
+                    {section.body}
+                  </p>
+                  {section.list && (
+                    <ul className="mt-5 space-y-3">
+                      {section.list.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-3 text-[13px] leading-6 text-forest/72"
+                        >
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mint" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="reveal-element mt-10 rounded-[22px] border border-forest/10 bg-[#F9F4EA] p-8 md:p-10">
+            <p className="text-[14px] leading-7 text-forest/72">
+              Questions or any requests?{" "}
+              <Link
+                href="/contact"
+                className="font-medium text-forest underline underline-offset-4"
+              >
+                Contact us here
+              </Link>
+              .
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Content */}
-      <main className="px-5 py-16 md:px-6 md:py-20">
-        <div className="mx-auto max-w-3xl space-y-6">
-
-          <div className="rounded-[24px] border border-[#D6C9B6] bg-[#FBF7F0] p-7 shadow-soft md:p-9">
-            <h2 className="text-[20px] font-semibold text-forest">Information We Collect</h2>
-            <p className="mt-4 text-base leading-8 text-ink/70">
-              We collect only what is necessary to provide the Nomy experience:
-            </p>
-            <ul className="mt-4 space-y-3 text-base leading-7 text-ink/70">
-              {[
-                "Basic profile information (name, profile photo) when you sign in with Google.",
-                "Your trip data — destinations, packing lists, notes, and itineraries you create inside the app.",
-                "Your approximate location, only when you use map or nearby features. We do not store your location history.",
-                "Anonymous usage data to help us understand how the app is used and improve it.",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3DDBC8]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rounded-[24px] border border-[#D6C9B6] bg-[#FBF7F0] p-7 shadow-soft md:p-9">
-            <h2 className="text-[20px] font-semibold text-forest">How We Use Your Information</h2>
-            <p className="mt-4 text-base leading-8 text-ink/70">
-              All data collected is used solely to operate and improve Nomy. Specifically:
-            </p>
-            <ul className="mt-4 space-y-3 text-base leading-7 text-ink/70">
-              {[
-                "To sync your trips and packing lists across devices.",
-                "To provide AI travel assistance relevant to your destination and context.",
-                "To show nearby places and recommendations based on your location.",
-                "To keep the app stable and fix issues as they arise.",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3DDBC8]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rounded-[24px] border border-[#D6C9B6] bg-[#FBF7F0] p-7 shadow-soft md:p-9">
-            <h2 className="text-[20px] font-semibold text-forest">What We Don&apos;t Do</h2>
-            <ul className="mt-5 space-y-3 text-base leading-7 text-ink/70">
-              {[
-                "We do not sell your personal data to any third party.",
-                "We do not use your data for advertising or tracking.",
-                "We do not store your raw GPS location or location history.",
-                "We do not share your trip content with other users.",
-                "We do not collect payment information — Nomy is free.",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#3DDBC8]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rounded-[24px] border border-[#D6C9B6] bg-[#FBF7F0] p-7 shadow-soft md:p-9">
-            <h2 className="text-[20px] font-semibold text-forest">Third-Party Services</h2>
-            <p className="mt-4 text-base leading-8 text-ink/70">
-              Nomy uses trusted third-party services to power core features — including authentication,
-              cloud storage, maps, and AI responses. Each service operates under its own privacy policy
-              and is selected for reliability and data safety. We do not grant any third party access
-              to your personal data beyond what is needed to deliver the feature.
-            </p>
-          </div>
-
-          <div className="rounded-[24px] border border-[#D6C9B6] bg-[#FBF7F0] p-7 shadow-soft md:p-9">
-            <h2 className="text-[20px] font-semibold text-forest">Data Retention &amp; Deletion</h2>
-            <p className="mt-4 text-base leading-8 text-ink/70">
-              Your data is kept only while your account is active. You can delete your account and all
-              associated data at any time from the Settings screen inside the app. Once deleted,
-              your data is permanently removed from our systems.
-            </p>
-          </div>
-
-          <div className="rounded-[24px] border border-[#D6C9B6] bg-[#FBF7F0] p-7 shadow-soft md:p-9">
-            <h2 className="text-[20px] font-semibold text-forest">Children</h2>
-            <p className="mt-4 text-base leading-8 text-ink/70">
-              Nomy is not intended for children under 13. We do not knowingly collect data from children.
-              If you believe a child has provided personal information, please contact us and we will
-              remove it promptly.
-            </p>
-          </div>
-
-          <div className="rounded-[24px] border border-[#D6C9B6] bg-[#FBF7F0] p-7 shadow-soft md:p-9">
-            <h2 className="text-[20px] font-semibold text-forest">Updates &amp; Contact</h2>
-            <p className="mt-4 text-base leading-8 text-ink/70">
-              We may update this policy as the app evolves. The effective date at the top will always
-              reflect the latest version.
-            </p>
-            <p className="mt-3 text-base leading-8 text-ink/70">
-              Questions or deletion requests?{" "}
-              <Link href="/contact" className="font-medium text-forest underline underline-offset-2">
-                Contact us here.
-              </Link>
-            </p>
-          </div>
-
-        </div>
-      </main>
-
-      <footer className="bg-forest px-5 py-8 md:px-6">
-        <div className="mx-auto flex max-w-8xl flex-col items-center justify-between gap-4 text-sm text-white/50 sm:flex-row">
-          <p>© 2026 Nomy. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-white">Privacy</Link>
-            <Link href="/terms" className="hover:text-white">Terms</Link>
-            <Link href="/contact" className="hover:text-white">Contact</Link>
-          </div>
-        </div>
-      </footer>
-    </div>
+        <PageFooter />
+      </div>
+    </SmoothScroll>
   );
 }
