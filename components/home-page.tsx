@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
 import {
+  Anchor,
   ArrowUpRight,
   Backpack,
   BarChart3,
@@ -12,16 +13,22 @@ import {
   Check,
   Compass,
   Download,
+  Globe,
+  Landmark,
+  MapPin,
   MapPinned,
   Menu,
+  Mountain,
+  Send,
   Settings2,
+  ShieldCheck,
   Sparkles,
+  Sun,
   WifiOff,
-  X
+  X,
+  Zap
 } from "lucide-react";
 import {
-  chatMessages,
-  destinationLogos,
   footerLinks,
   impactFeatures,
   impactStats,
@@ -87,7 +94,7 @@ export default function HomePage() {
     <div ref={rootRef} className="bg-[#F4EFE6] text-forest">
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b border-forest/10 bg-[#F4EFE6]/70 transition-transform duration-500",
+          "fixed inset-x-0 top-0 z-50 border-b border-forest/10 bg-[#F4EFE6]/[0.84] lg:bg-[#F4EFE6]/70 transition-transform duration-500",
           navVisible ? "translate-y-0" : "-translate-y-full"
         )}
       >
@@ -186,45 +193,7 @@ export default function HomePage() {
 
       <main className="pt-[88px]">
         {/* HERO */}
-        <section className="section-block relative">
-          <div className="relative h-[96vh] min-h-[620px] w-full overflow-hidden">
-            <img
-            src="/images/background/hero-image.png"
-              // src="https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=2000&q=80"
-              alt="Cinematic Indian landscape"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35" />
-            <div className="relative mx-auto flex h-full max-w-[1400px] flex-col items-center justify-center px-6 pb-28 pt-20 md:pt-40 text-center">
-              <h1 className="reveal-element max-w-[900px] font-semibold text-[44px] leading-[1.02] tracking-[-0.03em] text-white md:text-[76px]">
-                Intelligence that plans{" "}
-                <span className="font-serif italic font-normal">
-                  your journeys
-                </span>
-              </h1>
-              <p className="reveal-element mt-6 max-w-xl text-base leading-7 text-white/70 md:text-[17px]">
-                Your AI travel companion for India smart packing, nearby
-                discovery, trip planning, and real-time chat, all in one calm app.
-              </p>
-              <a
-                href="#download"
-                className="reveal-element button-pill mt-9 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-forest"
-              >
-                <Download className="h-4 w-4" />
-                Download Free on Android
-              </a>
-            </div>
-            <div className="absolute inset-x-0 bottom-0 border-t border-white/15 bg-black/18 backdrop-blur-sm">
-              <div className="mx-auto grid max-w-[1400px] grid-cols-3 gap-y-3 px-6 py-5 text-sm font-medium uppercase tracking-[0.2em] text-white/70 md:flex md:flex-wrap md:items-center md:justify-between md:gap-y-4">
-                {destinationLogos.map((logo) => (
-                  <span key={logo} className="opacity-85 text-center md:text-left">
-                    {logo}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <HeroSection />
 
         {/* SECTION 1 — WORKFLOW BUILDER */}
         <section className="section-block px-6 py-24 md:py-32">
@@ -833,6 +802,422 @@ export default function HomePage() {
         </div>
       </footer>
     </div>
+  );
+}
+
+type HeroDestination = {
+  location: string;
+  image: string;
+  tagTitle: string;
+  tagSub: string;
+  tagIcon: typeof Sun;
+  tagAccent: "white" | "mint" | "amber" | "violet";
+  rotate: string;
+  position: string;
+  tagPosition: string;
+};
+
+const heroDestinations: HeroDestination[] = [
+  {
+    location: "Jaipur, Rajasthan",
+    image:
+      "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=700&q=80",
+    tagTitle: "Best time to visit",
+    tagSub: "Oct – Mar",
+    tagIcon: Sun,
+    tagAccent: "white",
+    rotate: "-rotate-[3deg]",
+    position: "left-[1.5%] top-[40px] xl:left-[3%]",
+    tagPosition: "-right-6 -bottom-6"
+  },
+  {
+    location: "Alleppey, Kerala",
+    image:
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=700&q=80",
+    tagTitle: "Backwater escape",
+    tagSub: "Relax & unwind",
+    tagIcon: Anchor,
+    tagAccent: "mint",
+    rotate: "rotate-[2deg]",
+    position: "left-[1%] top-[400px] xl:left-[2.5%]",
+    tagPosition: "-right-4 -bottom-6"
+  },
+  {
+    location: "Varanasi, Uttar Pradesh",
+    image: "/images/destinations/varanasi.jpg",
+    tagTitle: "Spiritual journey",
+    tagSub: "3 days plan",
+    tagIcon: Landmark,
+    tagAccent: "amber",
+    rotate: "rotate-[3deg]",
+    position: "right-[1.5%] top-[40px] xl:right-[3%]",
+    tagPosition: "-left-4 -bottom-6"
+  },
+  {
+    location: "Leh, Ladakh",
+    image:
+      "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=700&q=80",
+    tagTitle: "Adventure awaits",
+    tagSub: "5 days plan",
+    tagIcon: Mountain,
+    tagAccent: "violet",
+    rotate: "-rotate-[2deg]",
+    position: "right-[1%] top-[400px] xl:right-[2.5%]",
+    tagPosition: "-left-4 -bottom-6"
+  }
+];
+
+const tagAccentMap: Record<HeroDestination["tagAccent"], string> = {
+  white: "bg-white text-forest",
+  mint: "bg-[#DDEFE3] text-forest",
+  amber: "bg-[#FBE7C2] text-[#7A4F0F]",
+  violet: "bg-[#E5DEF7] text-[#4A398E]"
+};
+
+const brandLogos = [
+  { name: "MakeMyTrip", src: "/images/branding/makemytrip.png" },
+  { name: "Yatra", src: "/images/branding/yatra.png" },
+  { name: "EaseMyTrip", src: "/images/branding/easymytrip.png" },
+  { name: "ixigo", src: "/images/branding/ixigo.png" },
+  { name: "Cleartrip", src: "/images/branding/cleartrip.png" }
+];
+
+const heroStats = [
+  {
+    icon: Sparkles,
+    title: "Personalized",
+    sub: "for you",
+    bg: "bg-[#D8EDD9]",
+    iconColor: "text-[#1F8253]"
+  },
+  {
+    icon: Zap,
+    title: "Real-time",
+    sub: "optimization",
+    bg: "bg-[#FBE7B5]",
+    iconColor: "text-[#B8770D]"
+  },
+  {
+    icon: Globe,
+    title: "Works",
+    sub: "everywhere",
+    bg: "bg-[#E0DBF5]",
+    iconColor: "text-[#5746B5]"
+  },
+  {
+    icon: ShieldCheck,
+    title: "Smart &",
+    sub: "secure",
+    bg: "bg-[#FBD9D5]",
+    iconColor: "text-[#C0392B]"
+  }
+];
+
+function HeroSection() {
+  return (
+    <section className="section-block relative overflow-hidden">
+      <div className="relative mx-auto w-full max-w-[1400px] px-6 pt-10 pb-16 md:pt-16 md:pb-20">
+        <HeroDecor />
+
+        {/* Floating destination cards (desktop only) */}
+        <div className="pointer-events-none hidden lg:block">
+          {heroDestinations.map((d) => (
+            <div
+              key={d.location}
+              className={cn(
+                "pointer-events-auto absolute z-10 w-[280px] xl:w-[300px]",
+                d.position,
+                d.rotate
+              )}
+            >
+              <DestinationCard data={d} />
+            </div>
+          ))}
+        </div>
+
+        {/* Center column */}
+        <div className="relative z-20 mx-auto flex max-w-[820px] flex-col items-center text-center">
+          <span className="reveal-element inline-flex items-center gap-1.5 rounded-full bg-mint/25 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-forest">
+            <Sparkles className="h-3.5 w-3.5" />
+            Nomy · AI Trip Planner
+          </span>
+
+          <h1 className="reveal-element mt-7 font-semibold text-[42px] leading-[1.04] tracking-[-0.03em] text-forest sm:text-[56px] md:text-[72px]">
+            Intelligence that{" "}
+            <br className="hidden md:inline" />
+            plans{" "}
+            <span className="relative inline-block whitespace-nowrap">
+              <span className="font-serif italic font-normal">your journeys</span>
+              <svg
+                aria-hidden
+                viewBox="0 0 400 18"
+                preserveAspectRatio="none"
+                className="absolute inset-x-0 -bottom-2 h-[12px] w-full"
+              >
+                <path
+                  d="M3 11 C 90 3, 200 3, 397 8"
+                  stroke="#F5C147"
+                  strokeWidth="7"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </svg>
+              <svg
+                aria-hidden
+                viewBox="0 0 32 32"
+                className="absolute -right-8 -top-2 h-7 w-7 text-[#F5C147] md:-right-10"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              >
+                <path d="M16 4 v6" />
+                <path d="M16 22 v6" />
+                <path d="M4 16 h6" />
+                <path d="M22 16 h6" />
+                <path d="M7 7 l4 4" />
+                <path d="M21 21 l4 4" />
+                <path d="M25 7 l-4 4" />
+                <path d="M11 21 l-4 4" />
+              </svg>
+            </span>
+          </h1>
+
+          <p className="reveal-element mt-8 max-w-[560px] text-[15px] leading-7 text-forest/70 md:text-[17px]">
+            From weekend getaways to epic adventures, Nomy crafts personalized
+            trips across India in seconds.
+          </p>
+
+          <p className="reveal-element mt-7 text-[13px] font-medium tracking-tight text-forest">
+            + Plan your next trip +
+          </p>
+
+          <a
+            href="#download"
+            className="reveal-element button-pill mt-3 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3.5 text-sm font-medium text-white"
+          >
+            <Download className="h-4 w-4" />
+            Download Free on Android
+          </a>
+
+          <a
+            href="#download"
+            className="reveal-element button-pill mt-5 inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/80 px-4 py-2 text-[12.5px] font-medium text-forest shadow-[0_8px_24px_-12px_rgba(0,61,46,0.25)] backdrop-blur-sm"
+          >
+            <PlayStoreIcon className="h-4 w-4" />
+            Beta on Play Store — try it out
+          </a>
+
+          {/* Stats row */}
+          <div className="reveal-element mt-14 grid w-full max-w-[820px] grid-cols-2 gap-3 rounded-[22px] border border-forest/10 bg-white/70 p-3 shadow-[0_18px_50px_-30px_rgba(0,61,46,0.18)] backdrop-blur-sm md:mt-[180px] md:grid-cols-4 md:gap-2 md:p-3">
+            {heroStats.map((s) => {
+              const Icon = s.icon;
+              return (
+                <div
+                  key={s.title}
+                  className="flex items-center gap-3 rounded-[16px] px-3 py-2.5 text-left"
+                >
+                  <div
+                    className={cn(
+                      "flex h-9 w-9 shrink-0 items-center justify-center rounded-full",
+                      s.bg
+                    )}
+                  >
+                    <Icon className={cn("h-[16px] w-[16px]", s.iconColor)} />
+                  </div>
+                  <div className="leading-tight">
+                    <p className="text-[13px] font-semibold text-forest">
+                      {s.title}
+                    </p>
+                    <p className="text-[12px] text-forest/60">{s.sub}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Trusted by */}
+          {/* <div className="reveal-element mt-8 w-full max-w-[920px] rounded-[22px] border border-forest/10 bg-white/65 px-6 py-6 shadow-[0_18px_50px_-30px_rgba(0,61,46,0.18)] backdrop-blur-sm">
+            <p className="text-center text-[10.5px] font-semibold uppercase tracking-[0.22em] text-forest/55">
+              Trusted by travelers in India
+            </p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 md:gap-x-14">
+              {brandLogos.map((b) => (
+                <Image
+                  key={b.name}
+                  src={b.src}
+                  alt={b.name}
+                  width={120}
+                  height={32}
+                  className="h-7 w-auto object-contain opacity-75 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 md:h-8"
+                />
+              ))}
+            </div>
+          </div> */}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DestinationCard({ data }: { data: HeroDestination }) {
+  const Icon = data.tagIcon;
+  return (
+    <div className="relative">
+      <div className="overflow-hidden rounded-[22px] bg-white shadow-[0_30px_60px_-25px_rgba(0,61,46,0.35)]">
+        <div className="relative h-[200px] w-full">
+          <img
+            src={data.image}
+            alt={data.location}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[12px] font-medium text-forest shadow-sm">
+            <MapPin className="h-3.5 w-3.5 text-[#1F8253]" />
+            {data.location}
+          </span>
+        </div>
+      </div>
+      <div
+        className={cn(
+          "absolute z-10 flex items-center gap-2 rounded-[14px] px-3 py-2.5 shadow-[0_16px_30px_-16px_rgba(0,0,0,0.35)]",
+          tagAccentMap[data.tagAccent],
+          data.tagPosition
+        )}
+      >
+        <Icon className="h-4 w-4 shrink-0" />
+        <div className="leading-tight">
+          <p className="text-[12px] font-semibold">{data.tagTitle}</p>
+          <p className="text-[11px] opacity-80">{data.tagSub}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HeroDecor() {
+  return (
+    <>
+      {/* Dotted curve - left, between cards */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute left-[8%] top-[260px] hidden h-[180px] w-[140px] text-forest/35 lg:block"
+        viewBox="0 0 140 180"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeDasharray="2 6"
+      >
+        <path d="M120 5 C 60 50, 20 100, 80 175" />
+      </svg>
+      {/* Dotted curve - right, between cards */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute right-[8%] top-[260px] hidden h-[180px] w-[140px] text-forest/35 lg:block"
+        viewBox="0 0 140 180"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeDasharray="2 6"
+      >
+        <path d="M20 5 C 80 50, 120 100, 60 175" />
+      </svg>
+      {/* Sparkle - far left top */}
+      <Sparkles
+        aria-hidden
+        className="pointer-events-none absolute left-[5%] top-[260px] hidden h-5 w-5 rotate-12 text-mint/70 lg:block"
+        strokeWidth={2}
+      />
+      {/* Sparkle - mid-right */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute right-[24%] top-[120px] hidden h-6 w-6 text-forest/40 xl:block"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path d="M12 2 L13.5 9 L20 11 L13.5 13 L12 20 L10.5 13 L4 11 L10.5 9 Z" />
+      </svg>
+      {/* Sparkle - mid-left */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute left-[24%] top-[140px] hidden h-5 w-5 text-forest/35 xl:block"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path d="M12 2 L13.5 9 L20 11 L13.5 13 L12 20 L10.5 13 L4 11 L10.5 9 Z" />
+      </svg>
+      {/* Paper plane - top right of right cards */}
+      <Send
+        aria-hidden
+        className="pointer-events-none absolute right-[10%] top-[24px] hidden h-5 w-5 -rotate-12 text-forest/45 lg:block"
+        strokeWidth={1.8}
+      />
+      {/* Map pin - bottom left */}
+      <MapPin
+        aria-hidden
+        className="pointer-events-none absolute left-[20%] top-[600px] hidden h-5 w-5 text-forest/40 lg:block"
+        strokeWidth={1.8}
+      />
+      {/* Dotted vertical curve - bottom right */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute right-[16%] top-[580px] hidden h-[80px] w-[80px] text-forest/30 xl:block"
+        viewBox="0 0 80 80"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeDasharray="2 6"
+      >
+        <path d="M10 70 C 40 40, 50 30, 75 8" />
+      </svg>
+    </>
+  );
+}
+
+function PlayStoreIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      aria-hidden
+    >
+      <defs>
+        <linearGradient id="ps-a" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#00A2FF" />
+          <stop offset="1" stopColor="#0061FF" />
+        </linearGradient>
+        <linearGradient id="ps-b" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#FF3A44" />
+          <stop offset="1" stopColor="#C31162" />
+        </linearGradient>
+        <linearGradient id="ps-c" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#FFE000" />
+          <stop offset="1" stopColor="#FFBD00" />
+        </linearGradient>
+        <linearGradient id="ps-d" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#00C170" />
+          <stop offset="1" stopColor="#008E3C" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M3.6 2.3c-.4.3-.6.8-.6 1.4v16.6c0 .6.2 1.1.6 1.4L13 12 3.6 2.3z"
+        fill="url(#ps-a)"
+      />
+      <path
+        d="M16.7 8.7L13 12l3.7 3.3 4.4-2.5c1.2-.7 1.2-2.5 0-3.2l-4.4-2.9z"
+        fill="url(#ps-c)"
+      />
+      <path
+        d="M3.6 2.3L13 12l3.7-3.3L5.2 1.9c-.6-.3-1.2-.1-1.6.4z"
+        fill="url(#ps-d)"
+      />
+      <path
+        d="M3.6 21.7c.4.5 1 .7 1.6.4l11.5-6.8L13 12l-9.4 9.7z"
+        fill="url(#ps-b)"
+      />
+    </svg>
   );
 }
 
