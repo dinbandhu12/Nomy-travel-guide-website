@@ -14,6 +14,7 @@ import type { Metadata } from "next";
 import PageNav from "@/components/page-nav";
 import PageFooter from "@/components/page-footer";
 import SmoothScroll from "@/components/smooth-scroll";
+import { APK_URL } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Destinations — Nomy",
@@ -166,14 +167,15 @@ export default function DestinationsPage() {
                   Indian destinations with AI-tuned packing, plans, and local
                   tips for every climate and rhythm.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="/#download"
+                {/* <div className="mt-6 flex flex-wrap gap-3"> */}
+                <div className="mt-6">
+                  {/* <a
+                    href={APK_URL}
                     className="button-pill inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white"
                   >
                     <Download className="h-4 w-4" />
                     Download Free
-                  </a>
+                  </a> */}
                   <Link
                     href="/features"
                     className="button-pill inline-flex items-center gap-2 rounded-full border border-forest/18 bg-white px-5 py-2.5 text-sm font-medium text-forest"
@@ -204,7 +206,7 @@ export default function DestinationsPage() {
         </section>
 
         {/* FEATURED DESTINATIONS */}
-        <section className="reveal-section px-6 pb-24 md:pb-32">
+        <section className="reveal-section px-6 py-24 md:py-32">
           <div className="mx-auto max-w-[1400px]">
             <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
               // Featured destinations
@@ -370,17 +372,18 @@ export default function DestinationsPage() {
             <div className="reveal-element relative overflow-hidden rounded-[24px] bg-[#F0E9D9]">
               <div className="px-6 py-24 text-center md:py-32">
                 <h2 className="mx-auto max-w-[760px] font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[60px]">
-                  Pick your next{" "}
-                  <span className="font-serif italic font-normal">
-                    Indian adventure
-                  </span>
+                  Questions? We&apos;d love to{" "}
+                  <span className="font-serif italic font-normal">hear from you</span>
                 </h2>
+                <p className="mx-auto mt-4 max-w-md text-[15px] leading-7 text-forest/62">
+                  Feedback, feature ideas, or just want to say hi — you&apos;ll reach the person building Nomy directly.
+                </p>
                 <a
-                  href="/#download"
+                  href="/contact"
                   className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-medium text-white"
                 >
-                  <Download className="h-4 w-4" />
-                  Download Free on Android
+                  Get in touch
+                  <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
             </div>

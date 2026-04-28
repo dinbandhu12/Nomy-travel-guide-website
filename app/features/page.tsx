@@ -20,6 +20,7 @@ import type { Metadata } from "next";
 import PageNav from "@/components/page-nav";
 import PageFooter from "@/components/page-footer";
 import SmoothScroll from "@/components/smooth-scroll";
+import { APK_URL } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Features — Nomy",
@@ -164,14 +165,15 @@ export default function FeaturesPage() {
                 ships a full toolkit for Indian travelers, in a single calm
                 flow.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="/#download"
+              {/* <div className="mt-6 flex flex-wrap gap-3"> */}
+              <div className="mt-6">
+                {/* <a
+                  href={APK_URL}
                   className="button-pill inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white"
                 >
                   <Download className="h-4 w-4" />
                   Download Free
-                </a>
+                </a> */}
                 <Link
                   href="/about"
                   className="button-pill inline-flex items-center gap-2 rounded-full border border-forest/18 bg-white px-5 py-2.5 text-sm font-medium text-forest"
@@ -202,7 +204,7 @@ export default function FeaturesPage() {
       </section>
 
       {/* CORE FEATURES */}
-      <section className="reveal-section px-6 pb-24 md:pb-32">
+      <section className="reveal-section px-6 py-24 md:py-32">
         <div className="mx-auto max-w-[1400px]">
           <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
             // Core pillars of every trip
@@ -262,8 +264,155 @@ export default function FeaturesPage() {
         </div>
       </section>
 
+      {/* NOMY AI */}
+      <section id="nomy-ai" className="reveal-section bg-[#F0E9D9] px-6 py-24 md:py-32">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+            // Nomy AI
+          </div>
+
+          <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+            <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+              Your travel brain,
+              <br />
+              <span className="font-serif italic font-normal">
+                always context-aware
+              </span>
+            </h2>
+            <p className="reveal-element max-w-lg text-[15px] leading-7 text-forest/74">
+              Nomy AI isn&apos;t a generic chatbot. It knows your destination,
+              the season, your trip duration, and your saved places — so every
+              answer is grounded in where you&apos;re actually going.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
+
+            {/* Left: dark feature card */}
+            <div className="reveal-element relative overflow-hidden rounded-[24px] bg-forest p-8 text-white md:p-10">
+              {/* subtle dot grid */}
+              <div
+                className="pointer-events-none absolute inset-0 opacity-[0.07]"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
+                }}
+              />
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.15em] text-mint">
+                <Sparkles className="h-3 w-3" />
+                Powered by GPT-4o-mini
+              </span>
+
+              <h3 className="mt-6 font-semibold text-[26px] leading-[1.1] tracking-tight md:text-[30px]">
+                Ask anything about your trip.
+                <br />
+                Get answers that actually help.
+              </h3>
+              <p className="mt-4 max-w-sm text-[14px] leading-7 text-white/68">
+                Permit rules, best time to visit a fort, vegetarian restaurants
+                near your stay, safe taxi services — Nomy AI gives real,
+                location-specific answers in seconds.
+              </p>
+
+              <ul className="mt-8 space-y-3">
+                {[
+                  { label: "Destination aware", desc: "Knows your exact location and local context" },
+                  { label: "Season & weather smart", desc: "Answers change based on when you're travelling" },
+                  { label: "Trip-length tuned", desc: "Shorter trips get tighter, focused advice" },
+                  { label: "Saved places integrated", desc: "Recommends based on what you've already bookmarked" },
+                ].map((item) => (
+                  <li key={item.label} className="flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-mint" />
+                    <div>
+                      <span className="text-[13px] font-semibold text-white">
+                        {item.label}
+                      </span>
+                      <span className="text-[13px] text-white/55"> — {item.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right: simulated chat UI */}
+            <div className="reveal-element flex flex-col gap-3">
+
+              {/* context pill */}
+              <div className="flex items-center gap-2 rounded-full border border-forest/12 bg-white px-4 py-2 text-[11px] font-medium text-forest/60 shadow-soft w-fit">
+                <span className="h-1.5 w-1.5 rounded-full bg-mint inline-block" />
+                Trip to Goa · 5 days · Dec 2026
+              </div>
+
+              {/* chat bubbles */}
+              {[
+                {
+                  role: "user",
+                  text: "Do I need any permits for North Goa beaches?",
+                },
+                {
+                  role: "ai",
+                  text: "No permits needed for public beaches in North Goa. Some private beach shacks may charge a small entry fee. Anjuna and Vagator tend to be more crowded in December — Morjim and Ashwem are quieter and permit-free.",
+                },
+                {
+                  role: "user",
+                  text: "Best sunset spot for December?",
+                },
+                {
+                  role: "ai",
+                  text: "Chapora Fort gives an unobstructed 360° view and is free. Arrive by 5:30 PM in December — sunset is around 6:10 PM. Anjuna cliff is another good one, a bit more crowded but closer to restaurants.",
+                },
+              ].map((msg, i) => (
+                <div
+                  key={i}
+                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div
+                    className={`max-w-[88%] rounded-[16px] px-4 py-3 text-[13px] leading-6 ${
+                      msg.role === "user"
+                        ? "rounded-br-[4px] bg-forest text-white"
+                        : "rounded-bl-[4px] border border-forest/10 bg-white text-forest shadow-soft"
+                    }`}
+                  >
+                    {msg.role === "ai" && (
+                      <p className="mb-1.5 text-[10px] font-medium uppercase tracking-[0.15em] text-mint">
+                        Nomy AI
+                      </p>
+                    )}
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+
+              {/* typing indicator */}
+              <div className="flex items-center gap-1.5 rounded-[16px] rounded-bl-[4px] border border-forest/10 bg-white px-4 py-3 shadow-soft w-fit">
+                <span className="h-1.5 w-1.5 rounded-full bg-forest/35 animate-bounce [animation-delay:0ms]" />
+                <span className="h-1.5 w-1.5 rounded-full bg-forest/35 animate-bounce [animation-delay:120ms]" />
+                <span className="h-1.5 w-1.5 rounded-full bg-forest/35 animate-bounce [animation-delay:240ms]" />
+              </div>
+            </div>
+          </div>
+
+          {/* stat strip */}
+          <div className="reveal-element mt-10 grid grid-cols-3 gap-4 rounded-[20px] border border-forest/10 bg-white p-6 shadow-soft">
+            {[
+              { n: "GPT-4o-mini", label: "Model — fast, accurate, affordable" },
+              { n: "Free", label: "Daily chats — no paywall for core use" },
+              { n: "India-first", label: "Answers grounded in Indian destinations" },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <div className="font-semibold text-[22px] leading-none tracking-tight text-forest md:text-[26px]">
+                  {s.n}
+                </div>
+                <p className="mt-2 text-[12px] text-forest/58">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* HOW IT WORKS */}
-      <section className="reveal-section px-6 pb-24 md:pb-32">
+      <section className="reveal-section px-6 py-24 md:py-32">
         <div className="mx-auto max-w-[1400px]">
           <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
             // How it works
@@ -421,10 +570,10 @@ export default function FeaturesPage() {
                 ))}
               </ul>
               <a
-                href="/#download"
+                href="/about"
                 className="button-pill mt-7 inline-flex items-center gap-2 rounded-full bg-mint px-5 py-2.5 text-sm font-medium text-forest"
               >
-                Try Nomy Free
+                Learn More
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
@@ -438,15 +587,18 @@ export default function FeaturesPage() {
           <div className="reveal-element relative overflow-hidden rounded-[24px] bg-[#F0E9D9]">
             <div className="px-6 py-24 text-center md:py-32">
               <h2 className="mx-auto max-w-[760px] font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[60px]">
-                All of this, free on{" "}
-                <span className="font-serif italic font-normal">Android</span>
+                See where these features{" "}
+                <span className="font-serif italic font-normal">take you</span>
               </h2>
+              <p className="mx-auto mt-4 max-w-md text-[15px] leading-7 text-forest/62">
+                Explore 30+ curated Indian destinations — each one AI-tuned with packing lists, local tips, and itineraries built for that exact place.
+              </p>
               <a
-                href="/#download"
+                href="/destinations"
                 className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-medium text-white"
               >
-                <Download className="h-4 w-4" />
-                Download Free on Android
+                Explore destinations
+                <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </div>

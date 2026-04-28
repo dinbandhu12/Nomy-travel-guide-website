@@ -29,6 +29,7 @@ import {
   Zap
 } from "lucide-react";
 import {
+  APK_URL,
   footerLinks,
   impactFeatures,
   impactStats,
@@ -134,7 +135,7 @@ export default function HomePage() {
           </nav>
           <div className="flex items-center gap-3">
             <a
-              href="#download"
+              href={APK_URL}
               className="button-pill hidden rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white lg:inline-flex"
             >
               Download Free
@@ -181,7 +182,7 @@ export default function HomePage() {
               </a>
             ))}
             <a
-              href="#download"
+              href={APK_URL}
               onClick={() => setMobileMenuOpen(false)}
               className="button-pill mt-1 rounded-full bg-forest px-6 py-3 text-center text-sm font-medium text-white"
             >
@@ -439,7 +440,7 @@ export default function HomePage() {
                   generic search results.
                 </p>
                 <a
-                  href="/features"
+                  href="/features#nomy-ai"
                   className="button-pill mt-6 inline-flex items-center gap-2 rounded-full border border-forest/18 bg-white px-5 py-2.5 text-sm font-medium text-forest"
                 >
                   See how Nomy thinks
@@ -547,10 +548,11 @@ export default function HomePage() {
             <div className="mt-14 grid gap-10 md:grid-cols-[1fr_1.05fr] md:items-center">
               <div className="reveal-element">
                 <a
-                  href="#download"
-                  className="button-pill inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white"
+                  href="/features"
+                  className="button-pill inline-flex items-center gap-2 rounded-full border border-forest/18 bg-white px-5 py-2.5 text-sm font-medium text-forest"
                 >
-                  Download Free
+                  Learn More
+                  <ArrowUpRight className="h-4 w-4" />
                 </a>
                 <div className="mt-10 space-y-0 border-t border-forest/15">
                   {impactFeatures.map((item, idx) => (
@@ -725,7 +727,7 @@ export default function HomePage() {
                   </span>
                 </h2>
                 <a
-                  href="#"
+                  href="https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.0.0/nomy.apk"
                   className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-medium text-white"
                 >
                   <Download className="h-4 w-4" />
@@ -779,7 +781,7 @@ export default function HomePage() {
                         : link === "About Us"
                         ? "/about"
                         : link === "Download"
-                        ? "/#download"
+                        ? APK_URL
                         : "#";
                     return (
                       <a
@@ -993,7 +995,7 @@ function HeroSection() {
           </p>
 
           <a
-            href="#download"
+            href={APK_URL}
             className="reveal-element button-pill mt-3 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3.5 text-sm font-medium text-white"
           >
             <Download className="h-4 w-4" />

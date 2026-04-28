@@ -22,6 +22,9 @@ import {
 
 export const navItems = ["About", "Features", "Destinations", "Contact"];
 
+export const APK_URL =
+  "https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.0.0/nomy.apk";
+
 export const destinationLogos = [
   "Goa",
   "Rajasthan",

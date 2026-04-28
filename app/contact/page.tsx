@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   ArrowUpRight,
   Clock,
-  Download,
   Mail,
   MapPin,
   Send,
@@ -13,6 +12,7 @@ import {
 import PageNav from "@/components/page-nav";
 import PageFooter from "@/components/page-footer";
 import SmoothScroll from "@/components/smooth-scroll";
+import { APK_URL } from "@/lib/data";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -69,7 +69,7 @@ export default function ContactPage() {
         </section>
 
         {/* CONTACT METHODS + FORM */}
-        <section className="reveal-section px-6 pb-24 md:pb-32">
+        <section className="reveal-section px-6 py-24 md:py-32">
           <div className="mx-auto max-w-[1400px]">
             <div className="grid gap-4 md:grid-cols-[1fr_1.3fr]">
               {/* LEFT: visual + info card */}
@@ -354,17 +354,18 @@ export default function ContactPage() {
             <div className="reveal-element relative overflow-hidden rounded-[24px] bg-[#F0E9D9]">
               <div className="px-6 py-24 text-center md:py-32">
                 <h2 className="mx-auto max-w-[760px] font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[60px]">
-                  Try Nomy free. No account{" "}
-                  <span className="font-serif italic font-normal">
-                    needed to start
-                  </span>
+                  Want to know the story{" "}
+                  <span className="font-serif italic font-normal">behind Nomy?</span>
                 </h2>
+                <p className="mx-auto mt-4 max-w-md text-[15px] leading-7 text-forest/62">
+                  One builder, one problem, one app for India. Read why Nomy exists and what we&apos;re working towards.
+                </p>
                 <a
-                  href="/#download"
+                  href="/about"
                   className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-medium text-white"
                 >
-                  <Download className="h-4 w-4" />
-                  Download Free on Android
+                  Read our story
+                  <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
             </div>

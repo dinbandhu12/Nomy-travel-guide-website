@@ -11,6 +11,7 @@ import type { Metadata } from "next";
 import PageNav from "@/components/page-nav";
 import PageFooter from "@/components/page-footer";
 import SmoothScroll from "@/components/smooth-scroll";
+import { APK_URL } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About — Nomy",
@@ -106,7 +107,7 @@ export default function AboutPage() {
                   way so I built one.
                 </p>
                 <a
-                  href="/#download"
+                  href={APK_URL}
                   className="button-pill mt-6 inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white"
                 >
                   <Download className="h-4 w-4" />
@@ -136,7 +137,7 @@ export default function AboutPage() {
         </section>
 
         {/* THE PROBLEM */}
-        <section className="reveal-section px-6 pb-24 md:pb-32">
+        <section className="reveal-section px-6 py-24 md:py-32">
           <div className="mx-auto max-w-[1400px]">
             <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
               // The problem
@@ -313,17 +314,18 @@ export default function AboutPage() {
             <div className="reveal-element relative overflow-hidden rounded-[24px] bg-[#F0E9D9]">
               <div className="px-6 py-24 text-center md:py-32">
                 <h2 className="mx-auto max-w-[760px] font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[60px]">
-                  Be among the first to{" "}
-                  <span className="font-serif italic font-normal">
-                    travel with Nomy
-                  </span>
+                  Curious what we{" "}
+                  <span className="font-serif italic font-normal">actually built?</span>
                 </h2>
+                <p className="mx-auto mt-4 max-w-md text-[15px] leading-7 text-forest/62">
+                  From smart packing to AI travel chat — see every feature that makes Nomy the one app Indian travelers actually keep.
+                </p>
                 <a
-                  href="/#download"
+                  href="/features"
                   className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-medium text-white"
                 >
-                  <Download className="h-4 w-4" />
-                  Download Free
+                  See all features
+                  <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
             </div>

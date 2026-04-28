@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { footerLinks } from "@/lib/data";
+import { APK_URL, footerLinks } from "@/lib/data";
 
 export default function PageFooter() {
   return (
@@ -44,7 +44,7 @@ export default function PageFooter() {
                       : link === "About Us"
                       ? "/about"
                       : link === "Download"
-                      ? "/#download"
+                      ? APK_URL
                       : "#";
                   return (
                     <a

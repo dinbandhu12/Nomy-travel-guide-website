@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { navItems } from "@/lib/data";
+import { APK_URL, navItems } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 export default function PageNav() {
@@ -49,7 +49,7 @@ export default function PageNav() {
         </nav>
         <div className="flex items-center gap-3">
           <a
-            href="/#download"
+            href={APK_URL}
             className="button-pill hidden rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white lg:inline-flex"
           >
             Download Free
@@ -82,7 +82,7 @@ export default function PageNav() {
             </a>
           ))}
           <a
-            href="/#download"
+            href={APK_URL}
             onClick={() => setOpen(false)}
             className="button-pill mt-1 rounded-full bg-forest px-6 py-3 text-center text-sm font-medium text-white"
           >
