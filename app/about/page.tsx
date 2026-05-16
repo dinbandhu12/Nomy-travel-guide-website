@@ -11,7 +11,7 @@ import type { Metadata } from "next";
 import PageNav from "@/components/page-nav";
 import PageFooter from "@/components/page-footer";
 import SmoothScroll from "@/components/smooth-scroll";
-import { APK_URL } from "@/lib/data";
+import { APP_VERSION, APK_URL } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About — Nomy",
@@ -111,7 +111,7 @@ export default function AboutPage() {
                   className="button-pill mt-6 inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white"
                 >
                   <Download className="h-4 w-4" />
-                  Download Free
+                  Download Free — {APP_VERSION}
                 </a>
               </div>
             </div>

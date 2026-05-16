@@ -29,6 +29,7 @@ import {
   Zap
 } from "lucide-react";
 import {
+  APP_VERSION,
   APK_URL,
   footerLinks,
   impactFeatures,
@@ -37,6 +38,7 @@ import {
   realWorldCards,
   travelerCard,
   useCases,
+  whatsNew,
   workflowFeatures
 } from "@/lib/data";
 import { cn } from "@/lib/utils";
@@ -138,7 +140,7 @@ export default function HomePage() {
               href={APK_URL}
               className="button-pill hidden rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white lg:inline-flex"
             >
-              Download Free
+              Download Free — {APP_VERSION}
             </a>
             <button
               type="button"
@@ -186,7 +188,7 @@ export default function HomePage() {
               onClick={() => setMobileMenuOpen(false)}
               className="button-pill mt-1 rounded-full bg-forest px-6 py-3 text-center text-sm font-medium text-white"
             >
-              Download Free
+              Download Free — {APP_VERSION}
             </a>
           </nav>
         </div>
@@ -253,6 +255,7 @@ export default function HomePage() {
             <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
               // Common use cases across every trip
             </div>
+
             <div className="mt-6 grid gap-3 md:grid-cols-5">
               {useCases.map((item) => {
                 const Icon = item.icon;
@@ -727,11 +730,11 @@ export default function HomePage() {
                   </span>
                 </h2>
                 <a
-                  href="https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.0.0/nomy.apk"
+                  href="https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.2.0/nomy.apk"
                   className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-medium text-white"
                 >
                   <Download className="h-4 w-4" />
-                  Download Free on Android
+                  Download Free on Android — {APP_VERSION}
                 </a>
               </div>
             </div>
@@ -999,7 +1002,7 @@ function HeroSection() {
             className="reveal-element button-pill mt-3 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3.5 text-sm font-medium text-white"
           >
             <Download className="h-4 w-4" />
-            Download Free on Android
+            Download Free on Android — {APP_VERSION}
           </a>
 
           <a
@@ -1009,6 +1012,17 @@ function HeroSection() {
             <PlayStoreIcon className="h-4 w-4" />
             Beta on Play Store — try it out
           </a>
+
+          <div className="reveal-element mt-12 w-full flex justify-center">
+            <a
+              href="/features#whats-new"
+              className="group inline-flex items-center gap-2 text-[12.5px] font-medium text-forest/80 hover:text-forest transition-colors"
+            >
+              <span className="text-[#F5C147]">✦</span>
+              <span>New app version {APP_VERSION} is released! Check what new! </span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </div>
 
           {/* Stats row */}
           <div className="reveal-element mt-14 grid w-full max-w-[820px] grid-cols-2 gap-3 rounded-[22px] border border-forest/10 bg-white/70 p-3 shadow-[0_18px_50px_-30px_rgba(0,61,46,0.18)] backdrop-blur-sm md:mt-[180px] md:grid-cols-4 md:gap-2 md:p-3">

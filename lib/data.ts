@@ -22,8 +22,18 @@ import {
 
 export const navItems = ["About", "Features", "Destinations", "Contact"];
 
+export const APP_VERSION = "v1.2.0";
+
 export const APK_URL =
-  "https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.0.0/nomy.apk";
+  "https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.2.0/nomy.apk";
+
+export const whatsNew = [
+  "Live weather forecast on trip cards & Tools Hub",
+  "In-app update banner for new versions",
+  "Trip editing — change date, duration & status",
+  "Budget cap with visual progress bar",
+  "Expandable place cards with rich details",
+];
 
 export const destinationLogos = [
   "Goa",

@@ -20,7 +20,7 @@ import type { Metadata } from "next";
 import PageNav from "@/components/page-nav";
 import PageFooter from "@/components/page-footer";
 import SmoothScroll from "@/components/smooth-scroll";
-import { APK_URL } from "@/lib/data";
+import { APP_VERSION, APK_URL, whatsNew } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Features — Nomy",
@@ -172,7 +172,7 @@ export default function FeaturesPage() {
                   className="button-pill inline-flex items-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-medium text-white"
                 >
                   <Download className="h-4 w-4" />
-                  Download Free
+                  Download Free — {APP_VERSION}
                 </a> */}
                 <Link
                   href="/about"
@@ -199,6 +199,36 @@ export default function FeaturesPage() {
                 <p className="mt-3 text-[13px] text-forest/62">{s.label}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT'S NEW */}
+      <section id="whats-new" className="reveal-section px-6 pb-16">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="reveal-element rounded-[24px] bg-forest px-8 pt-8 pb-6">
+            {/* Header */}
+            <div className="flex items-center mb-6">
+              <span className="rounded-full bg-white/15 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white">
+                What's New · {APP_VERSION}
+              </span>
+            </div>
+            {/* Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              {whatsNew.map((item, idx) => (
+                <div
+                  key={item}
+                  className="rounded-[16px] bg-white/8 border border-white/10 px-4 py-4 flex flex-col gap-3"
+                >
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F5C147]/20 text-[11px] font-bold text-[#F5C147]">
+                    {idx + 1}
+                  </span>
+                  <p className="text-[13px] leading-5 text-white/85">
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
