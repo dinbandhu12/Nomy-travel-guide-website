@@ -151,6 +151,29 @@ export const impactStats = [
   }
 ];
 
+export const faqs = [
+  {
+    q: "Is Nomy free?",
+    a: "Yes. Smart packing, trip planning, and nearby discovery are free forever. Premium unlocks unlimited AI chat and advanced tools."
+  },
+  {
+    q: "Does it work without internet?",
+    a: "Packing lists and saved trips are fully accessible offline. AI features and nearby discovery require a connection."
+  },
+  {
+    q: "Which destinations are supported?",
+    a: "Nomy works across all of India — Goa, Rajasthan, Kerala, Himachal, Ladakh, and beyond. Any destination with Google Places data works."
+  },
+  {
+    q: "How does the AI know about my destination?",
+    a: "Nomy's AI uses your trip details, GPS location, season, and destination context to give relevant answers — not generic travel advice."
+  },
+  {
+    q: "Is my data safe?",
+    a: "Yes. Nomy uses Firebase Auth and encrypted storage for chat history. Your data is never shared with third parties."
+  }
+];
+
 export const chatMessages = [
   {
     side: "left",

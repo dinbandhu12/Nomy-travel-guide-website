@@ -249,6 +249,43 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* LANGUAGE */}
+        <section className="reveal-section px-6 py-24 md:py-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Language support
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Built for
+                <br />
+                <span className="font-serif italic font-normal">
+                  भारत, in Hindi
+                </span>
+              </h2>
+              <div className="reveal-element">
+                <p className="max-w-lg text-[15px] leading-7 text-forest/74">
+                  Nomy supports Hindi as a first-class language. Switch the app to Hindi at any time — packing lists, AI chat, trip details, and navigation all work in Hindi out of the box. More Indian languages are planned as the app grows. <br />
+                  <span className="text-[12px] italic">"The default app language is English, but you can change it to Hindi from the settings."</span>
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {["हिंदी", "English"].map((lang) => (
+                    <span
+                      key={lang}
+                      className="rounded-full border border-forest/15 bg-white px-5 py-2 text-[14px] font-medium text-forest"
+                    >
+                      {lang}
+                    </span>
+                  ))}
+                  <span className="rounded-full border border-forest/10 bg-forest/5 px-5 py-2 text-[14px] font-medium text-forest/45">
+                    + More coming
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* TIMELINE */}
         <section className="reveal-section px-6 py-24 md:py-32">
           <div className="mx-auto max-w-[1400px]">

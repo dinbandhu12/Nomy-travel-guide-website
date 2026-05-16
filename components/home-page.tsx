@@ -31,6 +31,7 @@ import {
 import {
   APP_VERSION,
   APK_URL,
+  faqs,
   footerLinks,
   impactFeatures,
   impactStats,
@@ -712,6 +713,30 @@ export default function HomePage() {
                   <p className="mt-3 max-w-xs text-[13px] leading-6 text-forest/68">
                     {stat.text}
                   </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="section-block px-6 pb-24 md:pb-32">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="reveal-element text-[11px] font-medium uppercase tracking-[0.2em] text-forest/58">
+              // Common questions
+            </div>
+            <div className="mt-5 grid gap-12 md:grid-cols-[1fr_1fr] md:gap-16">
+              <h2 className="reveal-element font-semibold text-[40px] leading-[1.05] tracking-[-0.03em] text-forest md:text-[56px]">
+                Questions
+                <br />
+                <span className="font-serif italic font-normal">answered</span>
+              </h2>
+            </div>
+            <div className="mt-10 divide-y divide-forest/10 border-t border-forest/10">
+              {faqs.map((item) => (
+                <div key={item.q} className="reveal-element grid gap-4 py-6 md:grid-cols-[1fr_1.2fr]">
+                  <p className="text-[16px] font-semibold text-forest">{item.q}</p>
+                  <p className="text-[14px] leading-7 text-forest/68">{item.a}</p>
                 </div>
               ))}
             </div>
