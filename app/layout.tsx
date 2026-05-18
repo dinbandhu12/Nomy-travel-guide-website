@@ -16,6 +16,7 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nomy-sepia.vercel.app"),
   title: "Nomy — AI Travel Companion for India",
   description: "Smart packing lists, AI travel chat, and trip planning built for India. Free on Android. Built for Goa, Rajasthan, Kerala, and every trip in between.",
   openGraph: {
@@ -23,12 +24,21 @@ export const metadata: Metadata = {
     description: "Planning a trip in India means juggling 6 apps, 4 browser tabs, and a WhatsApp group. Nomy puts it all in one calm place. Free on Android.",
     type: "website",
     locale: "en_IN",
-    siteName: "Nomy"
+    siteName: "Nomy",
+    images: [
+      {
+        url: "/images/background/nomy-og.png",
+        width: 1200,
+        height: 630,
+        alt: "Nomy — AI Travel Companion for India"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Nomy — AI Travel Companion for India",
-    description: "Smart packing, AI travel chat, and offline maps. Built for Indian travelers. Free on Android."
+    description: "Smart packing, AI travel chat, and offline maps. Built for Indian travelers. Free on Android.",
+    images: ["/images/background/nomy-og.png"]
   }
 };
 
