@@ -755,7 +755,7 @@ export default function HomePage() {
                   </span>
                 </h2>
                 <a
-                  href="https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.2.0/nomy.apk"
+                  href="https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.3.0/nomy-v1.3.0.apk"
                   className="button-pill mt-8 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3 text-sm font-medium text-white"
                 >
                   <Download className="h-4 w-4" />
