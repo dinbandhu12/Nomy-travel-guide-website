@@ -22,17 +22,18 @@ import {
 
 export const navItems = ["About", "Features", "Destinations", "Contact"];
 
-export const APP_VERSION = "v1.3.0";
+export const APP_VERSION = "v1.4.0";
 
 export const APK_URL =
-  "https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.3.0/nomy-v1.3.0.apk";
+  "https://github.com/dinbandhu12/nomy-app-releases/releases/download/v1.4.0/nomy-v1.4.0.apk";
 
 export const whatsNew = [
-  "Drop a pin anywhere on the map to plan a trip",
-  "New trip tools — budget tracker, packing checklist & trip notes",
-  "Better weather & smarter AI trip suggestions",
-  "Faster, smoother app with cleaner loading & UI polish",
-  "Stability and performance improvements",
+  "Shopping lists for every trip",
+  "Sign in without losing your trips and saved places",
+  "Cleaner trip date picker",
+  "Edit Profile redesigned",
+  "Friendlier sign-in prompts for guests",
+  "New Home empty-state illustration",
 ];
 
 export const destinationLogos = [

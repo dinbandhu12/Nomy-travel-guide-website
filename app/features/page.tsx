@@ -11,6 +11,7 @@ import {
   MapPinned,
   MessageSquare,
   Settings2,
+  ShoppingBag,
   Sparkles,
   StickyNote,
   Wallet,
@@ -108,6 +109,11 @@ const howItWorks = [
 
 const toolFeatures = [
   {
+    icon: ShoppingBag,
+    title: "Shopping Lists",
+    text: "Create market lists alongside your packing list. Add items, tick them off as you shop, keep multiple lists per trip."
+  },
+  {
     icon: Wallet,
     title: "Budget Tracker",
     text: "Log spend by category food, transport, stay, shopping. Per-category breakdowns, no spreadsheet."
@@ -187,7 +193,7 @@ export default function FeaturesPage() {
 
           <div className="reveal-element mt-14 grid grid-cols-2 gap-10 border-t border-forest/15 pt-10 md:grid-cols-4">
             {[
-              { n: "10", label: "Core features" },
+              { n: "11", label: "Core features" },
               { n: "30s", label: "Packing list" },
               { n: "30+", label: "Destinations" },
               { n: "Free", label: "Core always" }
